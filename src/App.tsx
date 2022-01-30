@@ -4,6 +4,7 @@ import "./App.less";
 import "./style.css";
 import { IFcstResponse, IRequestParams } from "./common/interface";
 import { enResponse } from "./common/enType";
+import moment from "moment";
 
 const App = () => {
   const [params, setParams] = useState<IRequestParams>({
@@ -11,7 +12,7 @@ const App = () => {
     numOfRows: 1000,
     pageNo: 1,
     dataType: "JSON",
-    base_date: "20220126",
+    base_date: "20220130",
     base_time: "0500",
     nx: 55,
     ny: 127,
@@ -41,6 +42,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_API_KEY);
     console.log("start");
     getData();
   }, []);
