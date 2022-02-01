@@ -5,6 +5,7 @@ import "./style.css";
 import { IFcstResponse, IRequestParams } from "./common/interface";
 import { enResponse } from "./common/enType";
 import moment from "moment";
+import { Chart } from "./components";
 
 const filterTmp = (item: IFcstResponse) => {
   if (item.category === enResponse.TMP) {
@@ -47,56 +48,13 @@ const App = () => {
 
   const [data, setData] = useState<IFcstResponse[]>([]);
 
-  const draw = () => {
-    const canvas = document.getElementById("chart");
-    if (canvas.getContext) {
-      const ctx = canvas.getContext("2d");
-
-      let x = 20;
-      let y = 100;
-
-      ctx.font = "10px";
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-
-      const radius = 3; // 반지름
-      const startAngle = 0; // 원의 시작위치
-      const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
-      const anticlockwise = true; // 시계방향/반시계방향
-
-      data.forEach((item) => {
-        x = x + 30;
-        y = y + Number(item.fcstValue);
-        ctx.lineTo(x, y);
-        ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-        ctx.fillText(item.fcstDate.substring(4, 8), x - 10, y - 30); //날짜
-        ctx.fillText(item.fcstTime, x - 10, y - 5); // 시간
-        ctx.fillText(item.fcstValue, x - 5, y + 15); //기온
-      });
-
-      ctx.stroke();
-    }
-  };
-
   useEffect(() => {
     getData(url).then((res) => setData(res));
   }, []);
 
-  useEffect(() => {
-    if (data.length > 0) {
-      draw();
-    }
-  }, [data]);
-
   return (
     <React.Fragment>
-      {/* <button onClick={() => console.log(data)}>fff</button> */}
-      <canvas
-        id="chart"
-        width="1000"
-        height="200"
-        style={{ border: "1px solid black" }}
-      ></canvas>
+      <Chart data={data} />
     </React.Fragment>
   );
 };
