@@ -6,6 +6,14 @@ import moment from "moment";
 import { Chart } from "./components";
 import { getData } from "./common/api";
 import Present from "./components/Present";
+import { enResponse } from "./common/enType";
+import _ from "lodash";
+
+const filterTmp = (item: IFcstResponse) => {
+  if (item.category === enResponse.TMP) {
+    return true;
+  } else return false;
+};
 
 const App = () => {
   const [params, setParams] = useState<IRequestParams>({
@@ -20,25 +28,39 @@ const App = () => {
   });
 
   const [data, setData] = useState<IFcstResponse[]>([]);
+  const [nowValue, setNowValue] = useState<IFcstResponse>({} as any);
+  const [nowMin, setNowMin] = useState<IFcstResponse>({} as any);
+  const [nowMax, setNowMax] = useState<IFcstResponse>({} as any);
 
   useEffect(() => {
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
     getData(url).then((res) => {
-      setData(res);
-      console.log(
-        res.filter(
-          (item: IFcstResponse) =>
-            item.baseDate === moment().format("YYYYMMDD") &&
-            item.baseTime === moment().format("HH") + "00"
-        )
-      );
+      const filtered = res.filter(filterTmp);
+      setData(filtered);
+
+      const now = _.find(res, function (item: IFcstResponse) {
+        return (
+          item.fcstDate === moment().format("YYYYMMDD") &&
+          item.fcstTime === moment().format("HH") + "00"
+        );
+      });
+
+      const min = _.find(res, function (item: IFcstResponse) {
+        return item.category === enResponse.TMN;
+      });
+
+      const max = _.find(res, function (item: IFcstResponse) {
+        return item.category === enResponse.TMX;
+      });
+      setNowValue(now !== undefined && now);
+      setNowMin(min !== undefined && min);
+      setNowMax(max !== undefined && max);
     });
-    console.log(moment().format("HH") + "00");
   }, []);
 
   return (
     <React.Fragment>
-      <Present />
+      <Present value={nowValue} min={nowMin} max={nowMax} />
       <Chart data={data} />
     </React.Fragment>
   );

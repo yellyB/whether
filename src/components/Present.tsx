@@ -1,11 +1,27 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { IFcstResponse, IRequestParams } from "../common/interface";
-import moment from "moment";
+import React, { useState, useEffect } from "react";
+import { IFcstResponse } from "../common/interface";
 
-const Present = () => {
-  useEffect(() => {}, []);
+const strToNum = (str: string) => {
+  return Math.round(Number(str));
+};
 
-  return <React.Fragment>Present</React.Fragment>;
+const Present = (props: {
+  value: IFcstResponse;
+  min: IFcstResponse;
+  max: IFcstResponse;
+}) => {
+  const { value, min, max } = props;
+
+  useEffect(() => {
+    console.log(value);
+  }, []);
+
+  return (
+    <React.Fragment>
+      Present{value.fcstValue}/{strToNum(min.fcstValue)}/
+      {strToNum(max.fcstValue)}/
+    </React.Fragment>
+  );
 };
 
 export default Present;
