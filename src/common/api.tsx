@@ -21,7 +21,6 @@ export const getCody = async () => {
   let result = [];
   await Axios.get(process.env.PUBLIC_URL + "/datas/cody.json")
     .then((response) => {
-      console.log(response);
       result = response.data;
     })
     .catch((error) => console.log("error:", error));

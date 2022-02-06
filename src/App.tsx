@@ -67,7 +67,7 @@ const App = () => {
     <div className="app_wrapper">
       <Present value={nowValue} min={nowMin} max={nowMax} />
       <Chart data={data} />
-      <Recommand />
+      <Recommand value={nowValue} />
     </div>
   );
 };
