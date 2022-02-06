@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IFcstResponse } from "../common/interface";
-
-const strToNum = (str: string) => {
-  return Math.round(Number(str));
-};
+import { strToNum } from "../common/utils";
 
 const Present = (props: {
   value: IFcstResponse;
@@ -18,8 +15,11 @@ const Present = (props: {
 
   return (
     <React.Fragment>
-      Present{value.fcstValue}/{strToNum(min.fcstValue)}/
-      {strToNum(max.fcstValue)}/
+      현재 기온:{value.fcstValue}
+      <br />
+      오늘 최저:{strToNum(min.fcstValue)}
+      <br /> 오늘 최고:
+      {strToNum(max.fcstValue)}
     </React.Fragment>
   );
 };

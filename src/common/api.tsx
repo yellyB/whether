@@ -1,8 +1,6 @@
 import Axios from "axios";
-import { enResponse } from "./enType";
-import { IFcstResponse } from "./interface";
 
-export const getData = async (url: string) => {
+export const getWhether = async (url: string) => {
   let result = [];
   await Axios.get(url)
     .then((response) => {
@@ -14,6 +12,17 @@ export const getData = async (url: string) => {
       } else {
         console.log("response error");
       }
+    })
+    .catch((error) => console.log("error:", error));
+  return result;
+};
+
+export const getCody = async () => {
+  let result = [];
+  await Axios.get(process.env.PUBLIC_URL + "/datas/cody.json")
+    .then((response) => {
+      console.log(response);
+      result = response.data;
     })
     .catch((error) => console.log("error:", error));
   return result;

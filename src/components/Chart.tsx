@@ -66,14 +66,9 @@ const Chart = (props: { data: IFcstResponse[] }) => {
   }, [data]);
 
   return (
-    <React.Fragment>
-      <canvas
-        id="chart"
-        width="2200"
-        height="200"
-        style={{ border: "1px solid black" }}
-      ></canvas>
-    </React.Fragment>
+    <div className="chart_wrapper">
+      <canvas id="chart" width="2200" height="200" className="chart"></canvas>
+    </div>
   );
 };
 

@@ -23,3 +23,8 @@ export interface IFcstResponse {
   nx: number; //	 X 좌표
   ny: number; //	 Y 좌표
 }
+
+export interface ICody {
+  value: string;
+  cloths: string;
+}
