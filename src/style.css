@@ -2,3 +2,22 @@
 #root {
   background-color: #ede9e7;
 }
+.app_wrapper {
+  font-family: "nexonGothic";
+}
+.chart_wrapper {
+  border: 1px solid red;
+}
+@media (max-width: 768px) {
+  .chart_wrapper {
+    width: 80%;
+    overflow-y: auto;
+    border: 1px solid blue;
+  }
+  .chart_wrapper::-webkit-scrollbar {
+    display: none;
+  }
+}
+.chart {
+  border: 1px solid black;
+}
