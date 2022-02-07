@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ICody, IFcstResponse } from "../common/interface";
+import { ICody, IFcstData } from "../common/interface";
 import { getCody } from "../common/api";
 
-const Recommand = (props: { value: IFcstResponse }) => {
+const Recommand = (props: { value: IFcstData }) => {
   const { value } = props;
 
   const [data, setData] = useState<string[]>([]);
@@ -32,7 +32,7 @@ const Recommand = (props: { value: IFcstResponse }) => {
 
   return (
     <React.Fragment>
-      추천 코디
+      추천 아이템
       <br />
       <div className="flex-container">
         {data.map((item: string, index: number) => (

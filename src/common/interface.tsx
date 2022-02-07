@@ -23,6 +23,17 @@ export interface IFcstResponse {
   nx: number; //	 X 좌표
   ny: number; //	 Y 좌표
 }
+export interface IFcstData {
+  baseDate: string; //발표일자
+  baseTime: string; //	발표시각
+  category: enResponse; //	자료구분코드
+  fcstDate: string; //	날짜
+  fcstTime: string; //시간
+  fcstValue: string; //	실황 값
+  nx: number; //	 X 좌표
+  ny: number; //	 Y 좌표
+  state: string; // 날씨 상태 아이콘
+}
 
 export interface ICody {
   value: string;

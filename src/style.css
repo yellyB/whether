@@ -1,10 +1,26 @@
 /* 클래스 이름 지정 형식: [파일이름]_[컴포넌트이름]_[부가설명] */
 #root {
   background-color: #ede9e7;
-}
-.app_wrapper {
   font-family: "nexonGothic";
 }
+.backgroundImg_sunny {
+  background-image: url("localhost:3005/whether/images/sunny.png");
+}
+.backgroundImg_windy {
+  background-image: url("https://mdn.mozillademos.org/files/5405/gallery_4.jpg");
+}
+
+/* Present.tsx */
+.whetherState_img {
+  width: 100px;
+}
+.present_wrapper {
+  display: inline-flex;
+}
+.present_current_text {
+  font-size: 24pt;
+}
+
 .chart_wrapper {
   border: 1px solid red;
 }
@@ -18,6 +34,7 @@
     display: none;
   }
 }
+
 .chart {
   border: 1px solid black;
 }
@@ -37,7 +54,6 @@
   width: 10%;
   margin: 0px 5px 5px 0px;
 }
-
 @media (max-width: 768px) {
   .flex-item {
     background: #e7e7e7;

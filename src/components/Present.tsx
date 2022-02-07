@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { IFcstResponse } from "../common/interface";
+import { IFcstData, IFcstResponse } from "../common/interface";
 import { strToNum } from "../common/utils";
 
 const Present = (props: {
-  value: IFcstResponse;
+  value: IFcstData;
   min: IFcstResponse;
   max: IFcstResponse;
+  rainPercent: IFcstResponse;
 }) => {
-  const { value, min, max } = props;
+  const { value, min, max, rainPercent } = props;
 
   useEffect(() => {
-    console.log(value);
+    // console.log(rainPercent);
   }, []);
 
   return (
-    <React.Fragment>
-      현재 기온:{value.fcstValue}
-      <br />
-      오늘 최저:{strToNum(min.fcstValue)}
-      <br /> 오늘 최고:
-      {strToNum(max.fcstValue)}
-    </React.Fragment>
+    <div className="present_wrapper">
+      <img
+        alt="sunny"
+        src={process.env.PUBLIC_URL + "/images/" + value.state + ".png"}
+        className="whetherState_img"
+      />
+      <div>
+        <b className="present_current_text">{value.fcstValue}℃</b>
+        <br />
+        {strToNum(min.fcstValue)}℃ / {strToNum(max.fcstValue)}℃
+        <br />
+        강수확률 {rainPercent.fcstValue}%
+      </div>
+    </div>
   );
 };
 

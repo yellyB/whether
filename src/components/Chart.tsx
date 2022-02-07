@@ -1,42 +1,68 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { IFcstResponse, IRequestParams } from "../common/interface";
+import { IFcstData, IFcstResponse } from "../common/interface";
 import moment from "moment";
 
-const Chart = (props: { data: IFcstResponse[] }) => {
-  const { data } = props;
+const Chart = (props: {
+  temporatures: IFcstData[];
+  rains: IFcstResponse[];
+}) => {
+  const { temporatures, rains } = props;
 
   const draw = () => {
     const canvas = document.getElementById("chart");
     if (canvas.getContext) {
       const ctx = canvas.getContext("2d");
 
-      let x = 0;
-      let y = 100;
+      var sunny = new Image();
+      var windy = new Image();
+      var cloudy = new Image();
+      var rainny = new Image();
 
-      ctx.font = "10px";
-      ctx.fillStyle = "red";
+      sunny.src = process.env.PUBLIC_URL + "/images/sunny.png";
+      cloudy.src = process.env.PUBLIC_URL + "/images/cloudy.png";
 
-      ctx.strokeStyle = "green";
-      ctx.lineWidth = 5;
+      const imgWidth = 20;
+      const imgHeight = 20;
 
-      ctx.beginPath();
+      sunny.onload = function () {
+        let x = 0;
+        let y = 100;
+        const xDiff = 40;
 
-      const radius = 3; // 반지름
-      const startAngle = 0; // 원의 시작위치
-      const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
-      const anticlockwise = true; // 시계방향/반시계방향
+        ctx.font = "10px";
+        ctx.fillStyle = "red";
 
-      data.forEach((item) => {
-        x = x + 30;
-        const newY = y - Number(item.fcstValue) * 10;
-        ctx.lineTo(x, newY);
-        ctx.arc(x, newY, radius, startAngle, endAngle, anticlockwise);
-        ctx.fillText(item.fcstDate.substring(4, 8), x - 10, newY - 30); //날짜
-        ctx.fillText(item.fcstTime, x - 10, newY - 5); // 시간
-        ctx.fillText(item.fcstValue, x - 5, newY + 15); //기온
-      });
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 5;
 
-      ctx.stroke();
+        ctx.beginPath();
+
+        const radius = 3; // 반지름
+        const startAngle = 0; // 원의 시작위치
+        const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
+        const anticlockwise = true; // 시계방향/반시계방향
+
+        for (const i in temporatures) {
+          const temporature = temporatures[i];
+          const rain = rains[i];
+
+          x = x + xDiff;
+          const newY = y - Number(temporature.fcstValue) * 5;
+          ctx.lineTo(x, newY);
+          ctx.arc(x, newY, radius, startAngle, endAngle, anticlockwise);
+
+          if (Number(temporature.fcstValue) >= 0) {
+            ctx.drawImage(sunny, x - 10, newY - 30, imgWidth, imgHeight);
+          } else {
+            ctx.drawImage(cloudy, x - 10, newY - 30, imgWidth, imgHeight);
+          }
+          ctx.fillText(temporature.fcstDate.substring(4, 8), x - 10, newY - 30); // 날짜
+          ctx.fillText(temporature.fcstTime, x - 10, newY - 5); // 시간
+          ctx.fillText(temporature.fcstValue, x - 5, newY + 15); // 기온
+          ctx.fillText(rain.fcstValue + "%", x, newY + 25); // 강수확률
+        }
+        ctx.stroke();
+      };
     }
   };
 
@@ -59,15 +85,15 @@ const Chart = (props: { data: IFcstResponse[] }) => {
   };
 
   useEffect(() => {
-    if (data.length > 0) {
-      background();
+    if (temporatures.length > 0) {
+      // background();
       draw();
     }
-  }, [data]);
+  }, [temporatures]);
 
   return (
     <div className="chart_wrapper">
-      <canvas id="chart" width="2200" height="200" className="chart"></canvas>
+      <canvas id="chart" width="3000" height="200" className="chart"></canvas>
     </div>
   );
 };
