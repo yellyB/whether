@@ -21,48 +21,59 @@
   font-size: 24pt;
 }
 
+/* Chart.tsx */
 .chart_wrapper {
   border: 1px solid red;
   overflow-y: auto;
   width: 50%;
+  position: absolute;
+  top: 10px;
+  left: 30%;
 }
 @media (max-width: 768px) {
   .chart_wrapper {
     width: 80%;
     border: 1px solid blue;
+    position: inherit;
   }
   .chart_wrapper::-webkit-scrollbar {
     display: none;
   }
 }
-
 .chart {
   border: 1px solid black;
 }
 
+/* Recommand.tsx */
 .recommand_wrapper {
-  width: 30%;
+  width: 80%;
+  top: 200px;
+  position: relative;
 }
-
 .recommand_flex-container {
   margin: 10px;
   padding: 10px;
+  width: 30%;
   background: #889fc0;
   display: flex;
   justify-content: flex-start;
-  width: 80%;
   flex-wrap: wrap;
 }
-
 .recommand_flex-item {
   background: #e7e7e7;
-  width: 10%;
-  margin: 0px 5px 5px 0px;
+  width: 40%;
+  margin: 0px 10px 5px 0px;
 }
+
 @media (max-width: 768px) {
+  .recommand_wrapper {
+    top: 30px;
+  }
+  .recommand_flex-container {
+    width: 80%;
+  }
   .recommand_flex-item {
-    background: #e7e7e7;
     width: 30%;
-    margin: 0px 5px 5px 0px;
+    margin: 0px 10px 5px 0px;
   }
 }
