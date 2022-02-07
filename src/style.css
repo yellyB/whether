@@ -23,11 +23,12 @@
 
 .chart_wrapper {
   border: 1px solid red;
+  overflow-y: auto;
+  width: 50%;
 }
 @media (max-width: 768px) {
   .chart_wrapper {
     width: 80%;
-    overflow-y: auto;
     border: 1px solid blue;
   }
   .chart_wrapper::-webkit-scrollbar {
@@ -39,7 +40,11 @@
   border: 1px solid black;
 }
 
-.flex-container {
+.recommand_wrapper {
+  width: 30%;
+}
+
+.recommand_flex-container {
   margin: 10px;
   padding: 10px;
   background: #889fc0;
@@ -49,13 +54,13 @@
   flex-wrap: wrap;
 }
 
-.flex-item {
+.recommand_flex-item {
   background: #e7e7e7;
   width: 10%;
   margin: 0px 5px 5px 0px;
 }
 @media (max-width: 768px) {
-  .flex-item {
+  .recommand_flex-item {
     background: #e7e7e7;
     width: 30%;
     margin: 0px 5px 5px 0px;

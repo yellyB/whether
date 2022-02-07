@@ -31,17 +31,17 @@ const Recommand = (props: { value: IFcstData }) => {
   }, [value]);
 
   return (
-    <React.Fragment>
+    <div className="recommand_wrapper">
       추천 아이템
       <br />
-      <div className="flex-container">
+      <div className="recommand_flex-container">
         {data.map((item: string, index: number) => (
-          <div className="flex-item" key={index}>
+          <div className="recommand_flex-item" key={index}>
             {item}
           </div>
         ))}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { IFcstData, IFcstResponse } from "../common/interface";
+import { IFcstData } from "../common/interface";
 import moment from "moment";
 
-const Chart = (props: {
-  temporatures: IFcstData[];
-  rains: IFcstResponse[];
-}) => {
+const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
   const { temporatures, rains } = props;
 
   const draw = () => {
@@ -24,7 +21,7 @@ const Chart = (props: {
       const imgWidth = 20;
       const imgHeight = 20;
 
-      sunny.onload = function () {
+      cloudy.onload = () => {
         let x = 0;
         let y = 100;
         const xDiff = 40;
@@ -85,11 +82,11 @@ const Chart = (props: {
   };
 
   useEffect(() => {
-    if (temporatures.length > 0) {
+    if (temporatures.length > 0 && rains.length > 0) {
       // background();
       draw();
     }
-  }, [temporatures]);
+  }, [temporatures, rains]);
 
   return (
     <div className="chart_wrapper">

@@ -14,3 +14,11 @@ export enum enResponse {
   VEC = "VEC", // 풍향
   WSD = "WSD", // 풍속
 }
+
+export enum enSkyState {
+  sunny = "sunny", // 맑음
+  rainny = "rainny", // 비
+  snowy = "snowy", // 눈
+  cloudy = "cloudy", // 흐림
+  windy = "windy", // 바람
+}

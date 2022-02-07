@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./App.css";
 import "./style.css";
-import { IFcstData, IFcstResponse, IRequestParams } from "./common/interface";
+import { IFcstData, IRequestParams } from "./common/interface";
 import moment from "moment";
 import { Chart, Recommand } from "./components";
 import { getWhether } from "./common/api";
@@ -10,16 +10,10 @@ import { enResponse } from "./common/enType";
 import _ from "lodash";
 import { url } from "inspector";
 
-const filterData = (item: IFcstResponse, type) => {
+const filterData = (item: IFcstData, type) => {
   if (item.category === type) {
     return true;
   } else return false;
-};
-
-const whetherState = (item: IFcstResponse) => {
-  if (Number(item.fcstValue) >= 0) {
-    return { ...item, state: "sunny" };
-  } else return { ...item, state: "cloudy" };
 };
 
 const App = () => {
@@ -35,18 +29,18 @@ const App = () => {
   });
 
   const [temporatures, setTemporatures] = useState<IFcstData[]>([]);
-  const [rains, setRains] = useState<IFcstResponse[]>([]);
+  const [rains, setRains] = useState<IFcstData[]>([]);
   const [nowValue, setNowValue] = useState<IFcstData>({} as any);
-  const [nowMin, setNowMin] = useState<IFcstResponse>({} as any);
-  const [nowMax, setNowMax] = useState<IFcstResponse>({} as any);
-  const [rainPercent, setRainPercent] = useState<IFcstResponse>({} as any);
+  const [nowMin, setNowMin] = useState<IFcstData>({} as any);
+  const [nowMax, setNowMax] = useState<IFcstData>({} as any);
+  const [rainPercent, setRainPercent] = useState<IFcstData>({} as any);
 
   const getData = (url: string) => {
     getWhether(url).then((res) => {
       //기온만 뽑아내기
-      const onlyTemporature = res
-        .filter((item) => filterData(item, enResponse.TMP))
-        .map(whetherState);
+      const onlyTemporature = res.filter((item) =>
+        filterData(item, enResponse.TMP)
+      );
       setTemporatures(onlyTemporature);
 
       //강수확률만 뽑아내기
@@ -61,19 +55,20 @@ const App = () => {
         );
       });
       //현재 강수확률
-      const rain = _.find(res, (item: IFcstResponse) => {
+      const rain = _.find(onlyRain, (item: IFcstData) => {
         return (
           item.fcstDate === moment().format("YYYYMMDD") &&
           item.fcstTime === moment().format("HH") + "00"
         );
       });
+
       //오늘 최저
-      const min = _.find(res, (item: IFcstResponse) => {
+      const min = _.find(res, (item: IFcstData) => {
         return item.category === enResponse.TMN;
       });
 
       //오늘 최고
-      const max = _.find(res, (item: IFcstResponse) => {
+      const max = _.find(res, (item: IFcstData) => {
         return item.category === enResponse.TMX;
       });
 
