@@ -3,7 +3,7 @@ import "./App.css";
 import "./style.css";
 import { IFcstData, IRequestParams } from "./common/interface";
 import moment from "moment";
-import { Chart, Recommand } from "./components";
+import { Chart, Recommand, Time } from "./components";
 import { getWhether } from "./common/api";
 import Present from "./components/Present";
 import { enResponse } from "./common/enType";
@@ -91,12 +91,15 @@ const App = () => {
           "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
       }}
     >
-      <Present
-        value={nowValue}
-        min={nowMin}
-        max={nowMax}
-        rainPercent={rainPercent}
-      />
+      <div className="flex-container">
+        <Time />
+        <Present
+          value={nowValue}
+          min={nowMin}
+          max={nowMax}
+          rainPercent={rainPercent}
+        />
+      </div>
       <Chart temporatures={temporatures} rains={rains} />
       <Recommand value={nowValue} />
     </div>

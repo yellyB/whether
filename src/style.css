@@ -10,6 +10,26 @@
   background-image: url("https://mdn.mozillademos.org/files/5405/gallery_4.jpg");
 }
 
+/* Time.tsx */
+.flex-container {
+  flex-direction: column;
+  display: flex;
+}
+.time_wrapper {
+  width: 30%;
+  height: 100px;
+  border: 1px solid green;
+}
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: row;
+  }
+  .time_wrapper {
+    width: 30%;
+    border: 1px solid red;
+  }
+}
+
 /* Present.tsx */
 .whetherState_img {
   width: 100px;
@@ -54,6 +74,7 @@
   margin: 10px;
   padding: 10px;
   width: 30%;
+  max-width: 200px;
   background: #889fc0;
   display: flex;
   justify-content: flex-start;
@@ -61,7 +82,7 @@
 }
 .recommand_flex-item {
   background: #e7e7e7;
-  width: 40%;
+  width: 80%;
   margin: 0px 10px 5px 0px;
 }
 
@@ -71,6 +92,7 @@
   }
   .recommand_flex-container {
     width: 80%;
+    max-width: 1000px;
   }
   .recommand_flex-item {
     width: 30%;
