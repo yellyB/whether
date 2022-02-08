@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const Time = () => {
-  const [date, setDate] = useState("00 : 00 : 00");
-  const [time, setTime] = useState("00 : 00 : 00");
+  const [date, setDate] = useState("0000년 00월 00일");
+  const [time, setTime] = useState("00:00:00");
 
   const currentDate = () => {
     const now = new Date();
@@ -17,7 +17,7 @@ const Time = () => {
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
     const seconds = String(now.getSeconds()).padStart(2, "0");
-    setTime(`${hours} : ${minutes} : ${seconds}`);
+    setTime(`${hours}:${minutes}:${seconds}`);
   };
 
   const startTimer = () => {
@@ -31,8 +31,8 @@ const Time = () => {
 
   return (
     <div className="time_wrapper">
-      현재 시각{date}
-      {time}
+      <div className="time_date">{date}</div>
+      <div className="time_time">{time}</div>
     </div>
   );
 };

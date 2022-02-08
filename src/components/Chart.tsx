@@ -84,7 +84,7 @@ const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
   useEffect(() => {
     if (temporatures.length > 0 && rains.length > 0) {
       // background();
-      draw();
+      // draw();
     }
   }, [temporatures, rains]);
 

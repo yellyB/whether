@@ -9,6 +9,10 @@
 .backgroundImg_windy {
   background-image: url("https://mdn.mozillademos.org/files/5405/gallery_4.jpg");
 }
+.app_loading {
+  background-color: lightgray;
+  opacity: 30%;
+}
 
 /* Time.tsx */
 .flex-container {
@@ -28,6 +32,14 @@
     width: 30%;
     border: 1px solid red;
   }
+}
+.time_date {
+  font-size: 12pt;
+}
+
+.time_time {
+  font-size: 28pt;
+  font-family: "nexonGothic_light";
 }
 
 /* Present.tsx */

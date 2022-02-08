@@ -17,6 +17,8 @@ const filterData = (item: IFcstData, type) => {
 };
 
 const App = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const [params, setParams] = useState<IRequestParams>({
     serviceKey: process.env.REACT_APP_API_KEY,
     numOfRows: 1000,
@@ -35,8 +37,8 @@ const App = () => {
   const [nowMax, setNowMax] = useState<IFcstData>({} as any);
   const [rainPercent, setRainPercent] = useState<IFcstData>({} as any);
 
-  const getData = (url: string) => {
-    getWhether(url).then((res) => {
+  const getData = async (url: string) => {
+    await getWhether(url).then((res) => {
       //기온만 뽑아내기
       const onlyTemporature = res.filter((item) =>
         filterData(item, enResponse.TMP)
@@ -77,31 +79,39 @@ const App = () => {
       setNowMax(max !== undefined && max);
       setRainPercent(rain !== undefined && rain);
     });
+    return true;
   };
 
   useEffect(() => {
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    getData(url);
+    getData(url).then((res) => {
+      if (res) {
+        setLoading(false);
+      }
+    });
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundImage:
-          "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
-      }}
-    >
-      <div className="flex-container">
-        <Time />
-        <Present
-          value={nowValue}
-          min={nowMin}
-          max={nowMax}
-          rainPercent={rainPercent}
-        />
+    <div className={loading && "app_loading"}>
+      <div
+        style={{
+          backgroundImage:
+            "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
+        }}
+      >
+        {String(loading)}
+        <div className="flex-container">
+          <Time />
+          <Present
+            value={nowValue}
+            min={nowMin}
+            max={nowMax}
+            rainPercent={rainPercent}
+          />
+        </div>
+        <Chart temporatures={temporatures} rains={rains} />
+        <Recommand value={nowValue} />
       </div>
-      <Chart temporatures={temporatures} rains={rains} />
-      <Recommand value={nowValue} />
     </div>
   );
 };
