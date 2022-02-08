@@ -14,7 +14,6 @@ const Present = (props: {
   const [skyState, setSkyState] = useState<enSkyState>(enSkyState.sunny);
 
   useEffect(() => {
-    console.log(rainPercent.fcstValue);
     whetherState(value.fcstValue, rainPercent.fcstValue);
   }, [props]);
 
