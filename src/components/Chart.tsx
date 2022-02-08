@@ -15,8 +15,8 @@ const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
       var cloudy = new Image();
       var rainny = new Image();
 
-      sunny.src = process.env.PUBLIC_URL + "/images/sunny.png";
-      cloudy.src = process.env.PUBLIC_URL + "/images/cloudy.png";
+      sunny.src = process.env.PUBLIC_URL + "/images/whether/sunny.png";
+      cloudy.src = process.env.PUBLIC_URL + "/images/whether/cloudy.png";
 
       const imgWidth = 20;
       const imgHeight = 20;

@@ -3,7 +3,7 @@ import "./App.css";
 import "./style.css";
 import { IFcstData, IRequestParams } from "./common/interface";
 import moment from "moment";
-import { Chart, Recommand, Time } from "./components";
+import { Chart, Recommand, SiteList, Time } from "./components";
 import { getWhether } from "./common/api";
 import Present from "./components/Present";
 import { enResponse } from "./common/enType";
@@ -111,6 +111,7 @@ const App = () => {
         </div>
         <Chart temporatures={temporatures} rains={rains} />
         <Recommand value={nowValue} />
+        <SiteList />
       </div>
     </div>
   );

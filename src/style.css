@@ -111,3 +111,9 @@
     margin: 0px 10px 5px 0px;
   }
 }
+
+/* SiteList.tsx */
+.siteList_wrapper {
+  border: 1px solid red;
+  height: 100px;
+}

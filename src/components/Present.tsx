@@ -22,7 +22,7 @@ const Present = (props: {
     <div className="present_wrapper">
       <img
         alt="sunny"
-        src={process.env.PUBLIC_URL + "/images/" + skyState + ".png"}
+        src={process.env.PUBLIC_URL + "/images/whether/" + skyState + ".png"}
         className="whetherState_img"
       />
       <div>
