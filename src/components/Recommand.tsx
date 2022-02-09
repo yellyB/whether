@@ -7,7 +7,7 @@ const Recommand = (props: { value: IFcstData }) => {
   const { value } = props;
 
   const [data, setData] = useState<string[]>([]);
-  const [index, setIndex] = useState<number>(-1);
+  const [index, setIndex] = useState<number>(0);
 
   const getData = () => {
     return getCody().then((response) => {

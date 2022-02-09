@@ -3,9 +3,8 @@ import "./App.css";
 import "./style.css";
 import { IFcstData, IRequestParams } from "./common/interface";
 import moment from "moment";
-import { Chart, Recommand, SiteList, Time } from "./components";
+import { Chart, Loading, Recommand, Present, Time } from "./components";
 import { getWhether } from "./common/api";
-import Present from "./components/Present";
 import { enResponse } from "./common/enType";
 import _ from "lodash";
 import { url } from "inspector";
@@ -92,26 +91,25 @@ const App = () => {
   }, []);
 
   return (
-    <div className={loading && "app_loading"}>
-      <div
-        style={{
-          backgroundImage:
-            "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
-        }}
-      >
-        {String(loading)}
-        <div className="flex-container">
-          <Time />
-          <Present
-            value={nowValue}
-            min={nowMin}
-            max={nowMax}
-            rainPercent={rainPercent}
-          />
-        </div>
-        <Chart temporatures={temporatures} rains={rains} />
-        <Recommand value={nowValue} />
+    <div
+      style={{
+        backgroundImage:
+          "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
+      }}
+    >
+      {loading && <Loading />}
+      {String(loading)}
+      <div className="flex-container">
+        <Time />
+        <Present
+          value={nowValue}
+          min={nowMin}
+          max={nowMax}
+          rainPercent={rainPercent}
+        />
       </div>
+      <Chart temporatures={temporatures} rains={rains} />
+      <Recommand value={nowValue} />
     </div>
   );
 };
