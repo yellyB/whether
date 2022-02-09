@@ -116,4 +116,18 @@
 .siteList_wrapper {
   border: 1px solid red;
   height: 100px;
+  position: relative;
+  left: 300px;
+}
+@media (max-width: 768px) {
+  .siteList_wrapper {
+    border: 1px solid red;
+    height: 100px;
+    position: relative;
+    top: 50px;
+    left: 0px;
+  }
+}
+.siteList_img {
+  width: 100px;
 }
