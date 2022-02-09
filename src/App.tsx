@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./style.css";
 import { IFcstData, IRequestParams } from "./common/interface";
@@ -111,7 +111,6 @@ const App = () => {
         </div>
         <Chart temporatures={temporatures} rains={rains} />
         <Recommand value={nowValue} />
-        <SiteList />
       </div>
     </div>
   );

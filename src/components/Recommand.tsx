@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ICody, IFcstData } from "../common/interface";
 import { getCody } from "../common/api";
+import { SiteList } from ".";
 
 const Recommand = (props: { value: IFcstData }) => {
   const { value } = props;
 
   const [data, setData] = useState<string[]>([]);
+  const [index, setIndex] = useState<number>(-1);
 
   const getData = () => {
     return getCody().then((response) => {
@@ -31,17 +33,24 @@ const Recommand = (props: { value: IFcstData }) => {
   }, [value]);
 
   return (
-    <div className="recommand_wrapper">
-      추천 아이템
-      <br />
-      <div className="recommand_flex-container">
-        {data.map((item: string, index: number) => (
-          <div className="recommand_flex-item" key={index}>
-            {item}
-          </div>
-        ))}
+    <>
+      <div className="recommand_wrapper">
+        추천 아이템
+        <br />
+        <div className="recommand_flex-container">
+          {data.map((item: string, index: number) => (
+            <div
+              className="recommand_flex-item"
+              key={index}
+              onClick={() => setIndex(index)}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+      <SiteList key={index} />
+    </>
   );
 };
 

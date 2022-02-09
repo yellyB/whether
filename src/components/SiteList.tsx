@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useReducer, createContext, useContext } from "react";
 import { getRandomInt } from "../common/utils";
 
-const SiteList = (props: {}) => {
-  console.log(getRandomInt(10, 20));
-
+const SiteList = () => {
   return (
     <div className="siteList_wrapper">
       {Array.from({ length: 4 }, (v, i) => i).map((i: number) => (
-        <img
-          className="siteList_img"
-          alt="."
-          src={
-            process.env.PUBLIC_URL +
-            "/images/items/" +
-            getRandomInt(i * 10, (i + 1) * 10) +
-            ".png"
-          }
-        />
+        <div>
+          <img
+            className="siteList_img"
+            alt="img"
+            src={
+              process.env.PUBLIC_URL +
+              "/images/items/" +
+              getRandomInt(i * 10, (i + 1) * 10) +
+              ".png"
+            }
+          />
+          <b className="siteList_font">구매하러 가기 {">"} </b>
+        </div>
       ))}
     </div>
   );
