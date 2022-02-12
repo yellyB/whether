@@ -30,6 +30,7 @@
   width: 25px;
   margin: 7px;
 }
+
 /* Time.tsx */
 .flex-container {
   flex-direction: column;
@@ -145,12 +146,14 @@
 }
 .chart {
   border: 1px solid black;
+  width: 3000px;
+  height: 200px;
 }
 
 /* Recommand.tsx */
 .recommand_wrapper {
   width: 80%;
-  top: 10px;
+  top: 30px;
   position: relative;
 }
 .recommand_flex-container {
@@ -187,13 +190,15 @@
   border: 1px solid red;
   height: 100px;
   position: relative;
-  top: -180px;
+  top: -160px;
   left: 300px;
+  width: calc(100% - 300px);
+  height: 100%;
 }
 @media (max-width: 768px) {
   .siteList_wrapper {
     border: 1px solid red;
-    height: 100px;
+    height: calc(100% + 50px);
     position: relative;
     top: 50px;
     left: 0px;

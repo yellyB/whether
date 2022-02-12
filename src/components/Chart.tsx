@@ -90,7 +90,7 @@ const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
 
   return (
     <div className="chart_wrapper">
-      <canvas id="chart" width="3000" height="200" className="chart"></canvas>
+      <canvas id="chart" className="chart"></canvas>
     </div>
   );
 };
