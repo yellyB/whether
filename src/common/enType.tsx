@@ -16,9 +16,20 @@ export enum enResponse {
 }
 
 export enum enSkyState {
+  sun = "sun", // 해
   sunny = "sunny", // 맑음
-  rainny = "rainny", // 비
-  snowy = "snowy", // 눈
-  cloudy = "cloudy", // 흐림
-  windy = "windy", // 바람
+  rain = "rain", // 우산
+  rain1 = "rain1", // 우산(투명우산)
+  rainny = "rainny", // 약한 비 + 구름
+  rainny1 = "rainny1", // 거센 비 + 구름
+  snow = "snow", // 눈
+  snowy = "snowy", // 눈 + 구름
+  cloud = "cloud", // 구름
+  cloudy = "cloudy", // 구름x2
+  wind = "wind", // 바람
+  windy = "windy", // 바람 + 구름
+  lightning = "lightning", // 번개 + 구름
+  lightning1 = "lightning1", // 번개 + 구름 + 비
+  moon = "moon", // 달
+  moony = "moony", // 달 + 구름
 }

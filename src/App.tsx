@@ -98,17 +98,19 @@ const App = () => {
       }}
     >
       {loading && <Loading />}
-      <div className="flex-container">
-        <Time />
-        <Present
-          value={nowValue}
-          min={nowMin}
-          max={nowMax}
-          rainPercent={rainPercent}
-        />
+      <div className="app_content">
+        <div className="flex-container">
+          <Time />
+          <Present
+            value={nowValue}
+            min={nowMin}
+            max={nowMax}
+            rainPercent={rainPercent}
+          />
+        </div>
+        <Chart temporatures={temporatures} rains={rains} />
+        <Recommand value={nowValue} />
       </div>
-      <Chart temporatures={temporatures} rains={rains} />
-      <Recommand value={nowValue} />
     </div>
   );
 };

@@ -20,13 +20,15 @@ const Present = () => {
 
   return (
     <div className="app_loading">
-      {Array.from({ length: cnt }, (v, i) => i).map((i: number) => (
-        <img
-          alt="loading"
-          src={process.env.PUBLIC_URL + "/images/whether/sunny.png"}
-          className="loading_img"
-        />
-      ))}
+      <div className="app_loading_imgs">
+        {Array.from({ length: cnt }, (v, i) => i).map((i: number) => (
+          <img
+            alt="loading"
+            src={process.env.PUBLIC_URL + "/images/icon/loading" + i + ".png"}
+            className="loading_img"
+          />
+        ))}
+      </div>
     </div>
   );
 };

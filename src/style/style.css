@@ -2,6 +2,8 @@
 #root {
   background-color: #ede9e7;
   font-family: "nexonGothic";
+}
+.app_content {
   padding: 10px;
 }
 .backgroundImg_sunny {
@@ -11,14 +13,22 @@
   background-image: url("https://mdn.mozillademos.org/files/5405/gallery_4.jpg");
 }
 .app_loading {
-  background-color: #bdbdbd;
-  opacity: 70%;
+  background-color: #494949;
+  opacity: 90%;
   position: absolute;
   width: 100%;
   height: 100vh;
   z-index: 99;
 }
+.app_loading_imgs {
+  position: relative;
+  top: calc(50% - 10px);
+  left: calc(50% - 45px);
+  opacity: 100%;
+}
 .loading_img {
+  width: 25px;
+  margin: 7px;
 }
 /* Time.tsx */
 .flex-container {
@@ -63,17 +73,54 @@
   display: inline-flex;
   margin: 10px 0px 0px 0px;
 }
-.whetherState_img {
-  width: 100px;
+.present_whether_img {
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+}
+.present_text {
+  display: flex;
 }
 .present_current_text {
-  font-size: 24pt;
+  font-family: "nexonGothic_light";
+  margin: 15px 0px 0px 20px;
+  font-size: 48pt;
+  color: #2b2b2b;
 }
-
+.present_other_text {
+  margin: 35px 0px 0px 10px;
+  font-size: 14pt;
+}
+.present_rainPer_img {
+  position: relative;
+  top: 2px;
+}
 @media (max-width: 768px) {
   .present_wrapper {
+    margin: 20px 0px 0px calc(200px + 20%);
+    position: absolute;
+  }
+  .present_whether_img {
+    width: 100px;
+    height: 100px;
+  }
+  .present_text {
     display: inline;
-    margin: 0px 0px 0px 100px;
+    margin-left: calc(5% - 10px);
+  }
+  .present_current_text {
+    font-family: "nexonGothic";
+    margin: 5px 0px 0px 20px;
+    font-size: 32pt;
+  }
+  .present_other_text {
+    margin: 5px 0px 0px 20px;
+    font-size: 12pt;
+  }
+  .present_rainPer_img {
+    width: 15px;
+    position: relative;
+    top: 2px;
   }
 }
 
