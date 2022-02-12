@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import "./style.css";
+import "./style/style.css";
 import { IFcstData, IRequestParams } from "./common/interface";
 import moment from "moment";
 import { Chart, Loading, Recommand, Present, Time } from "./components";
@@ -98,7 +98,6 @@ const App = () => {
       }}
     >
       {loading && <Loading />}
-      {String(loading)}
       <div className="flex-container">
         <Time />
         <Present
