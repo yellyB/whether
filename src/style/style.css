@@ -27,7 +27,7 @@
 }
 .time_wrapper {
   width: 40%;
-  height: 100px;
+  height: 150px;
 }
 .time_theme_btn {
   position: absolute;
@@ -61,7 +61,7 @@
 /* Present.tsx */
 .present_wrapper {
   display: inline-flex;
-  margin: 100px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
 }
 .whetherState_img {
   width: 100px;
@@ -72,9 +72,11 @@
 
 @media (max-width: 768px) {
   .present_wrapper {
-    margin: 0px 0px 0px 200px;
+    display: inline;
+    margin: 0px 0px 0px 100px;
   }
 }
+
 /* Chart.tsx */
 .chart_wrapper {
   border: 1px solid red;
@@ -82,7 +84,7 @@
   width: 50%;
   position: absolute;
   top: 10px;
-  left: 480px;
+  left: 360px;
 }
 @media (max-width: 768px) {
   .chart_wrapper {
@@ -101,7 +103,7 @@
 /* Recommand.tsx */
 .recommand_wrapper {
   width: 80%;
-  top: 200px;
+  top: 10px;
   position: relative;
 }
 .recommand_flex-container {
@@ -119,7 +121,6 @@
   width: 80%;
   margin: 0px 10px 5px 0px;
 }
-
 @media (max-width: 768px) {
   .recommand_wrapper {
     top: 30px;
@@ -139,6 +140,7 @@
   border: 1px solid red;
   height: 100px;
   position: relative;
+  top: -180px;
   left: 300px;
 }
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@
 
 #clock {
   width: 300px;
-  padding: 10px 10px 20px 10px;
+  padding: 20px 10px 20px 10px;
   /* position: relative; */
 }
 
@@ -19,7 +19,7 @@
   padding-top: 30px;
   border-radius: 6px;
   position: relative;
-  height: 50px;
+  height: 55px;
 }
 
 /*-------------------------
@@ -340,11 +340,11 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 14px;
+  top: 10px;
 }
 
 #clock .digits div.dots:after {
-  top: 34px;
+  top: 28px;
 }
 
 /*-------------------------
