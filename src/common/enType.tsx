@@ -15,6 +15,20 @@ export enum enResponse {
   WSD = "WSD", // 풍속
 }
 
+export enum enSKY {
+  맑음 = 1,
+  구름많음 = 3,
+  흐림 = 4,
+}
+
+export enum enPTY {
+  없음 = 0,
+  비 = 1,
+  비눈 = 2,
+  눈 = 3,
+  소나기 = 4,
+}
+
 export enum enSkyState {
   sun = "sun", // 해
   sunny = "sunny", // 맑음

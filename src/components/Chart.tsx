@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { IFcstData } from "../common/interface";
+import { IFcst } from "../common/interface";
 import moment from "moment";
 
-const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
-  const { temporatures, rains } = props;
+const Chart = (props: { values: IFcst[] }) => {
+  const { values } = props;
 
   const draw = () => {
     const canvas = document.getElementById("chart");
@@ -39,24 +39,21 @@ const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
         const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
         const anticlockwise = true; // 시계방향/반시계방향
 
-        for (const i in temporatures) {
-          const temporature = temporatures[i];
-          const rain = rains[i];
-
+        for (const value of values) {
           x = x + xDiff;
-          const newY = y - Number(temporature.fcstValue) * 5;
+          const newY = y - value.tmp * 5;
           ctx.lineTo(x, newY);
           ctx.arc(x, newY, radius, startAngle, endAngle, anticlockwise);
 
-          if (Number(temporature.fcstValue) >= 0) {
+          if (value.tmp >= 0) {
             ctx.drawImage(sunny, x - 10, newY - 30, imgWidth, imgHeight);
           } else {
             ctx.drawImage(cloudy, x - 10, newY - 30, imgWidth, imgHeight);
           }
-          ctx.fillText(temporature.fcstDate.substring(4, 8), x - 10, newY - 30); // 날짜
-          ctx.fillText(temporature.fcstTime, x - 10, newY - 5); // 시간
-          ctx.fillText(temporature.fcstValue, x - 5, newY + 15); // 기온
-          ctx.fillText(rain.fcstValue + "%", x, newY + 25); // 강수확률
+          ctx.fillText(value.fcstDate.substring(4, 8), x - 10, newY - 30); // 날짜
+          ctx.fillText(value.fcstTime, x - 10, newY - 5); // 시간
+          ctx.fillText(value.tmp, x - 5, newY + 15); // 기온
+          ctx.fillText(value.pop + "%", x, newY + 25); // 강수확률
         }
         ctx.stroke();
       };
@@ -82,15 +79,15 @@ const Chart = (props: { temporatures: IFcstData[]; rains: IFcstData[] }) => {
   };
 
   useEffect(() => {
-    if (temporatures.length > 0 && rains.length > 0) {
+    if (values.length > 0) {
       // background();
       // draw();
     }
-  }, [temporatures, rains]);
+  }, [values]);
 
   return (
     <div className="chart_wrapper">
-      <canvas id="chart" className="chart"></canvas>
+      <canvas id="chart" className="chart" width="3000" height="200"></canvas>
     </div>
   );
 };

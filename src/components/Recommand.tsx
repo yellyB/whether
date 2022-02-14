@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ICody, IFcstData } from "../common/interface";
+import { ICody, IFcst } from "../common/interface";
 import { getCody } from "../common/api";
 import { SiteList } from ".";
 
-const Recommand = (props: { value: IFcstData }) => {
+const Recommand = (props: { value: IFcst }) => {
   const { value } = props;
 
   const [data, setData] = useState<string[]>([]);
@@ -20,7 +20,7 @@ const Recommand = (props: { value: IFcstData }) => {
       .then((res) => {
         let cody = res[res.length - 1];
         for (const r of res) {
-          if (Number(value.fcstValue) >= r.value) {
+          if (value.tmp >= r.value) {
             cody = value;
             return;
           }

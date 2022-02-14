@@ -115,6 +115,7 @@
     font-size: 32pt;
   }
   .present_other_text {
+    width: 100px;
     margin: 5px 0px 0px 20px;
     font-size: 12pt;
   }
@@ -146,8 +147,8 @@
 }
 .chart {
   border: 1px solid black;
-  width: 3000px;
-  height: 200px;
+  /* width: 3000px;
+  height: 200px; */
 }
 
 /* Recommand.tsx */

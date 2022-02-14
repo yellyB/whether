@@ -1,4 +1,4 @@
-import { enResponse } from "./enType";
+import { enPTY, enResponse, enSKY } from "./enType";
 
 //날씨 조회 - 요청 데이터
 export interface IRequestParams {
@@ -23,6 +23,19 @@ export interface IFcstData {
   nx: number; //	 X 좌표
   ny: number; //	 Y 좌표
 }
+
+// 날씨 정보
+export interface IFcst {
+  fcstDate: string; //	날짜
+  fcstTime: string; //시간
+  tmp: number; //	기온
+  pop: number; //	강수확률
+  pty: enPTY; //	강수형태
+  sky: enSKY; //	하늘상태
+  // min: number;
+  // max: number;
+}
+
 export interface ICody {
   value: string;
   cloths: string;

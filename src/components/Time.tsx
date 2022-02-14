@@ -103,7 +103,6 @@ const Time = () => {
     }
 
     const weekdays = clock.getElementsByClassName("weekdays")[0];
-    console.log(weekdays);
 
     // Run a timer every second and update the clock
 

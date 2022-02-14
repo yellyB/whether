@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./style/style.css";
-import { IFcstData, IRequestParams } from "./common/interface";
+import { IFcst, IRequestParams } from "./common/interface";
 import moment from "moment";
 import { Chart, Loading, Recommand, Present, Time } from "./components";
 import { getWhether } from "./common/api";
-import { enResponse } from "./common/enType";
 import _ from "lodash";
-import { url } from "inspector";
-
-const filterData = (item: IFcstData, type) => {
-  if (item.category === type) {
-    return true;
-  } else return false;
-};
 
 const App = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,54 +21,27 @@ const App = () => {
     ny: 127,
   });
 
-  const [temporatures, setTemporatures] = useState<IFcstData[]>([]);
-  const [rains, setRains] = useState<IFcstData[]>([]);
-  const [nowValue, setNowValue] = useState<IFcstData>({} as any);
-  const [nowMin, setNowMin] = useState<IFcstData>({} as any);
-  const [nowMax, setNowMax] = useState<IFcstData>({} as any);
-  const [rainPercent, setRainPercent] = useState<IFcstData>({} as any);
+  const [datas, setDatas] = useState<IFcst[]>([]);
+  const [nowValue, setNowValue] = useState<IFcst>({} as any);
+  const [nowMin, setNowMin] = useState<number>(0);
+  const [nowMax, setNowMax] = useState<number>(0);
 
   const getData = async (url: string) => {
-    await getWhether(url).then((res) => {
-      //기온만 뽑아내기
-      const onlyTemporature = res.filter((item) =>
-        filterData(item, enResponse.TMP)
-      );
-      setTemporatures(onlyTemporature);
-
-      //강수확률만 뽑아내기
-      const onlyRain = res.filter((item) => filterData(item, enResponse.POP));
-      setRains(onlyRain);
+    await getWhether(url).then((response) => {
+      const res = response.data;
+      setDatas(response.data);
 
       //현재 기온
-      const now = _.find(onlyTemporature, (item: IFcstData) => {
+      const now = _.find(res, (item: IFcst) => {
         return (
           item.fcstDate === moment().format("YYYYMMDD") &&
           item.fcstTime === moment().format("HH") + "00"
         );
-      });
-      //현재 강수확률
-      const rain = _.find(onlyRain, (item: IFcstData) => {
-        return (
-          item.fcstDate === moment().format("YYYYMMDD") &&
-          item.fcstTime === moment().format("HH") + "00"
-        );
-      });
-
-      //오늘 최저
-      const min = _.find(res, (item: IFcstData) => {
-        return item.category === enResponse.TMN;
-      });
-
-      //오늘 최고
-      const max = _.find(res, (item: IFcstData) => {
-        return item.category === enResponse.TMX;
       });
 
       setNowValue(now !== undefined && now);
-      setNowMin(min !== undefined && min);
-      setNowMax(max !== undefined && max);
-      setRainPercent(rain !== undefined && rain);
+      setNowMin(response.min);
+      setNowMax(response.max);
     });
     return true;
   };
@@ -101,14 +66,9 @@ const App = () => {
       <div className="app_content">
         <div className="flex-container">
           <Time />
-          <Present
-            value={nowValue}
-            min={nowMin}
-            max={nowMax}
-            rainPercent={rainPercent}
-          />
+          <Present value={nowValue} min={nowMin} max={nowMax} />
         </div>
-        <Chart temporatures={temporatures} rains={rains} />
+        <Chart values={datas} />
         <Recommand value={nowValue} />
       </div>
     </div>
