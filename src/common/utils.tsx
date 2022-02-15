@@ -17,16 +17,18 @@ export const whetherState = (value: IFcst) => {
       case enPTY.소나기:
         return enSkyState.rainny1;
       default:
-        return enSkyState.cloudy;
+        return value.sky === enSKY.구름많음
+          ? enSkyState.cloud
+          : enSkyState.cloudy;
     }
   } else {
     switch (value.pty) {
       case enPTY.비:
         return enSkyState.rainny;
       case enPTY.비눈:
-        return enSkyState.snowy;
+        return enSkyState.snow;
       case enPTY.눈:
-        return enSkyState.snowy;
+        return enSkyState.snow;
       case enPTY.소나기:
         return enSkyState.rainny;
       default:
