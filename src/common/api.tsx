@@ -11,8 +11,7 @@ const filterData = (item: IFcstData, type) => {
 };
 
 export const getWhether = async (url: string) => {
-  let result = [];
-  let res: any = {
+  let result: any = {
     data: [],
     min: 0,
     max: 0,
@@ -27,45 +26,32 @@ export const getWhether = async (url: string) => {
 
         const list = [];
 
-        let date = "";
-        let time = "";
-        let tmp = 0,
-          pop = 0,
-          pty = 0,
-          sky = 0;
+        const timeData = {
+          fcstDate: resData[0].fcstDate,
+          fcstTime: resData[0].fcstTime,
+          tmp: Number(resData[0].fcstValue),
+          pop: 0,
+          pty: 0,
+          sky: 0,
+        };
 
         resData.forEach((item) => {
-          if (time !== item.fcstTime) {
-            const temp = {
-              fcstDate: date,
-              fcstTime: time,
-              tmp: tmp,
-              pop: pop,
-              pty: pty,
-              sky: sky,
-            };
-            if (time !== "") list.push(temp);
-            date = item.fcstDate;
-            time = item.fcstTime;
-            tmp = Number(item.fcstValue);
+          if (timeData.fcstTime !== item.fcstTime) {
+            timeData.fcstDate = item.fcstDate;
+            timeData.fcstTime = item.fcstTime;
+            timeData.tmp = Number(item.fcstValue);
+            list.push({ ...timeData });
           } else {
-            if (item.category === "POP") pop = Number(item.fcstValue);
-            else if (item.category === "PTY") pty = Number(item.fcstValue);
-            else if (item.category === "SKY") sky = Number(item.fcstValue);
+            if (item.category === "POP") timeData.pop = Number(item.fcstValue);
+            else if (item.category === "PTY")
+              timeData.pty = Number(item.fcstValue);
+            else if (item.category === "SKY")
+              timeData.sky = Number(item.fcstValue);
           }
         });
 
-        const temp = {
-          fcstDate: date,
-          fcstTime: time,
-          tmp: tmp,
-          pop: pop,
-          pty: pty,
-          sky: sky,
-        };
-        list.push(temp);
-
-        result = resData;
+        list.push({ ...timeData });
+        console.log(list);
 
         //오늘 최저
         const min = await _.find(resData, (item: IFcstData) => {
@@ -77,15 +63,15 @@ export const getWhether = async (url: string) => {
           return item.category === enResponse.TMX;
         });
 
-        res.min = strToNum(min.fcstValue);
-        res.max = strToNum(max.fcstValue);
-        res.data = list;
+        result.min = strToNum(min.fcstValue);
+        result.max = strToNum(max.fcstValue);
+        result.data = list;
       } else {
         console.log("response error");
       }
     })
     .catch((error) => console.log("error:", error));
-  return res;
+  return result;
 };
 
 export const getCody = async () => {

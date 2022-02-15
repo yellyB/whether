@@ -10,7 +10,7 @@ import _ from "lodash";
 const App = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [params, setParams] = useState<IRequestParams>({
+  const [params] = useState<IRequestParams>({
     serviceKey: process.env.REACT_APP_API_KEY,
     numOfRows: 1000,
     pageNo: 1,

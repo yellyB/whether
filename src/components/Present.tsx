@@ -9,13 +9,8 @@ const Present = (props: { value: IFcst; min: number; max: number }) => {
   const [skyState, setSkyState] = useState<enSkyState>(enSkyState.sun);
 
   useEffect(() => {
-    whetherState(value.tmp, value.pop);
-    if (value.tmp < 0) {
-      setSkyState(enSkyState.snow);
-    } else if (value.pop >= 70) {
-      setSkyState(enSkyState.rain);
-    }
-  }, [props]);
+    setSkyState(whetherState(value));
+  }, [value]);
 
   return (
     <div className="present_wrapper">

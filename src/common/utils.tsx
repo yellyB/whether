@@ -1,13 +1,38 @@
-import { enSkyState } from "./enType";
+import { enPTY, enSKY, enSkyState } from "./enType";
+import { IFcst } from "./interface";
 
 export const strToNum = (str: string) => {
   return Math.round(Number(str));
 };
 
-export const whetherState = (temporature: number, rain: number) => {
-  if (temporature >= 0) {
-    return enSkyState.sunny;
-  } else return enSkyState.cloudy;
+export const whetherState = (value: IFcst) => {
+  if (value.sky === enSKY.구름많음 || value.sky === enSKY.흐림) {
+    switch (value.pty) {
+      case enPTY.비:
+        return enSkyState.rainny1;
+      case enPTY.비눈:
+        return enSkyState.snowy;
+      case enPTY.눈:
+        return enSkyState.snowy;
+      case enPTY.소나기:
+        return enSkyState.rainny1;
+      default:
+        return enSkyState.cloudy;
+    }
+  } else {
+    switch (value.pty) {
+      case enPTY.비:
+        return enSkyState.rainny;
+      case enPTY.비눈:
+        return enSkyState.snowy;
+      case enPTY.눈:
+        return enSkyState.snowy;
+      case enPTY.소나기:
+        return enSkyState.rainny;
+      default:
+        return enSkyState.sun;
+    }
+  }
 };
 
 export const getRandomInt = (min, max) => {
