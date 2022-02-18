@@ -168,9 +168,15 @@
   flex-wrap: wrap;
 }
 .recommand_flex-item {
-  background: #e7e7e7;
   width: 80%;
   margin: 0px 10px 5px 0px;
+  background: #e7e7e7;
+}
+.recommand_flex-item_selected {
+  width: 80%;
+  margin: 0px 10px 5px 0px;
+  background: #3f3f3f;
+  color: white;
 }
 @media (max-width: 768px) {
   .recommand_wrapper {
@@ -181,6 +187,10 @@
     max-width: 1000px;
   }
   .recommand_flex-item {
+    width: 30%;
+    margin: 0px 10px 5px 0px;
+  }
+  .recommand_flex-item_selected {
     width: 30%;
     margin: 0px 10px 5px 0px;
   }
