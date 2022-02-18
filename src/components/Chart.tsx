@@ -91,15 +91,15 @@ const Chart = (props: { values: IFcst[] }) => {
           );
 
           // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, newY - 30); // 날짜
-          ctx.fillText(value.fcstTime, x - 10, newY - 5); // 시간
+          // ctx.fillText(value.fcstTime, x - 10, newY - 5); // 시간
           ctx.fillText(value.tmp, x - 5, newY + 15); // 기온
-          ctx.fillText(value.pop + "%", x, newY + 25); // 강수확률
+          // ctx.fillText(value.pop + "%", x, newY + 25); // 강수확률
         }
         ctx.stroke();
       };
     }
 
-    //날짜 출력
+    //날짜, 시간출력
     if (canvas.getContext) {
       const ctx = canvas.getContext("2d");
 
@@ -107,7 +107,7 @@ const Chart = (props: { values: IFcst[] }) => {
       ctx.fillStyle = "green";
 
       let x = 0;
-      let y = 200;
+      let y = 20;
       const xDiff = 40;
 
       let date = "";
@@ -119,6 +119,8 @@ const Chart = (props: { values: IFcst[] }) => {
 
           ctx.fillText(value.fcstDate.substring(4, 8), x - 10, y); // 날짜
         }
+        ctx.fillText(value.fcstTime, x - 10, y + 10); // 시간
+        ctx.fillText(value.pop + "%", x, y + 200); // 강수확률
       }
     }
   };
