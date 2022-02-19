@@ -104,7 +104,7 @@ const Chart = (props: { values: IFcst[] }) => {
       const ctx = canvas.getContext("2d");
 
       ctx.font = "10px";
-      ctx.fillStyle = "green";
+      ctx.fillStyle = "blue";
 
       let x = 0;
       let y = 20;
