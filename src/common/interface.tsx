@@ -40,3 +40,11 @@ export interface ICody {
   value: string;
   cloths: string;
 }
+
+export interface IItem {
+  idx: number;
+  name: string;
+  brand: string;
+  itemNo: string;
+  price: number;
+}
