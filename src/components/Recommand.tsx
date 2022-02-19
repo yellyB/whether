@@ -35,14 +35,14 @@ const Recommand = (props: { value: IFcst }) => {
   return (
     <>
       <div className="recommand_wrapper">
-        추천 아이템
+        <span className="recommand_text">추천 아이템</span>
         <br />
         <div className="recommand_flex-container">
           {data.map((item: string, index: number) => (
             <div
               className={
                 key === index
-                  ? "recommand_flex-item_selected"
+                  ? "recommand_flex-item recommand_flex-item_selected"
                   : "recommand_flex-item"
               }
               key={index}

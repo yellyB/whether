@@ -5,7 +5,7 @@ const SiteList = () => {
   return (
     <div className="siteList_wrapper">
       {Array.from({ length: 4 }, (v, i) => i).map((i: number) => (
-        <div>
+        <div className="siteList_items">
           <img
             className="siteList_img"
             alt="img"
