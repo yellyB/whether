@@ -7,6 +7,9 @@ import { enSkyState } from "../common/enType";
 const Chart = (props: { values: IFcst[] }) => {
   const { values } = props;
 
+  const CART_WIDTH = 3000;
+  const CART_HEIGHT = 250;
+
   const draw = () => {
     const canvas = document.getElementById("chart");
     const canvas1 = document.getElementById("chart");
@@ -130,7 +133,7 @@ const Chart = (props: { values: IFcst[] }) => {
     if (canvas.getContext) {
       const ctx = canvas.getContext("2d");
       // 그레이디언트를 생성한다
-      var lingrad = ctx.createLinearGradient(0, 0, 0, 150);
+      var lingrad = ctx.createLinearGradient(0, 0, 0, CART_HEIGHT);
       lingrad.addColorStop(0, "orange");
       lingrad.addColorStop(0.5, "white");
       lingrad.addColorStop(1, "blue");
@@ -139,20 +142,25 @@ const Chart = (props: { values: IFcst[] }) => {
       ctx.fillStyle = lingrad;
 
       // 도형을 그린다
-      ctx.fillRect(10, 10, 1000, 180);
+      ctx.fillRect(0, 0, CART_WIDTH, CART_HEIGHT);
     }
   };
 
   useEffect(() => {
     if (values.length > 0) {
-      // background();
+      background();
       draw();
     }
   }, [values]);
 
   return (
     <div className="chart_wrapper">
-      <canvas id="chart" className="chart" width="3000" height="250"></canvas>
+      <canvas
+        id="chart"
+        className="chart"
+        width={CART_WIDTH}
+        height={CART_HEIGHT}
+      ></canvas>
     </div>
   );
 };
