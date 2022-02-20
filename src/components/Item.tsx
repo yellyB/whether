@@ -7,16 +7,24 @@ const Item = (props: { data: IItem }) => {
 
   return (
     <div className="siteList_items">
-      <img
-        className="siteList_img"
-        alt="img"
-        src={process.env.PUBLIC_URL + "/images/items/" + data.idx + ".jpg"}
-      />
-      {data.name}
-      {data.brand}
-      {data.itemNo}
-      {numberWithComma(data.price)}
-      <b className="siteList_font">구매하러 가기 {">"} </b>
+      <div className="item_flex-container">
+        <img
+          className="item_img"
+          alt="img"
+          src={process.env.PUBLIC_URL + "/images/items/" + data.idx + ".jpg"}
+        />
+      </div>
+      <div className="item_flex-container">
+        <span className="item_font1">{data.name}</span>
+        <br />
+        <span className="item_font2">
+          {data.brand} [{data.itemNo}]
+        </span>
+        <br />
+        <span className="item_font3">{numberWithComma(data.price)}</span>
+        <br />
+        <span className="item_font4">구매하러 가기 {">"} </span>
+      </div>
     </div>
   );
 };
