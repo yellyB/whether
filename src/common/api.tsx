@@ -32,7 +32,11 @@ export const getWhether = async (url: string) => {
 
         resData.forEach((item) => {
           // 현재시각 이후만 저장하기
-          if (moment().isBefore(moment(item.fcstDate + " " + item.fcstTime))) {
+          if (
+            moment().isBefore(
+              moment(item.fcstDate + " " + item.fcstTime.substring(0, 2) + "59")
+            )
+          ) {
             if (timeData.fcstTime !== item.fcstTime) {
               timeData.fcstDate = item.fcstDate;
               timeData.fcstTime = item.fcstTime;

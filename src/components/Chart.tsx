@@ -46,8 +46,8 @@ const Chart = (props: { values: IFcst[] }) => {
       cloudy.onload = () => {
         let x = 0;
         let y = 100;
-        const fixedY = 20;
-        const xDiff = 40;
+        const fixedY = 220;
+        const xDiff = 50;
 
         ctx.strokeStyle = "pink";
         ctx.lineWidth = 3;
@@ -106,20 +106,20 @@ const Chart = (props: { values: IFcst[] }) => {
             // ctx.font = "18px nexonGothic";
             // ctx.fillStyle = "purple";
             // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, fixedY); // 날짜
-            const diff = moment(value.fcstDate).diff(
+            const dayDiff = moment(value.fcstDate).diff(
               moment().format("YYYYMMDD"),
               "days"
             );
 
             ctx.font = "12px nexonGothic";
             ctx.fillStyle = "black";
-            ctx.fillText(weekOfDay(diff), x - 10, fixedY + 200); // 날짜로 내일,모레..출력
+            ctx.fillText(weekOfDay(dayDiff), x - 10, fixedY); // 날짜로 내일,모레..출력
             continue;
           }
           ctx.font = "12px nexonGothic";
           ctx.fillStyle = "darkgray";
           let valueTime = value.fcstTime.substring(0, 2) + "시";
-          ctx.fillText(valueTime, x - 10, fixedY + 200); // 시간
+          ctx.fillText(valueTime, x - 10, fixedY); // 시간
         }
         ctx.stroke();
       };

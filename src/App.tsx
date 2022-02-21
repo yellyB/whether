@@ -32,14 +32,14 @@ const App = () => {
       setDatas(response.data);
 
       //현재 기온
-      const now = _.find(res, (item: IFcst) => {
-        return (
-          item.fcstDate === moment().format("YYYYMMDD") &&
-          item.fcstTime === moment().format("HH") + "00"
-        );
-      });
+      // const now = _.find(res, (item: IFcst) => {
+      //   return (
+      //     item.fcstDate === moment().format("YYYYMMDD") &&
+      //     item.fcstTime === moment().format("HH") + "00"
+      //   );
+      // });
 
-      setNowValue(now !== undefined && now);
+      setNowValue(res !== undefined && res[0]);
       setNowMin(response.min);
       setNowMax(response.max);
     });

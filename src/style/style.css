@@ -2,6 +2,14 @@
 #root {
   background-color: #ede9e7;
   font-family: "nexonGothic";
+  padding: 0px 0px 0px 15%;
+}
+@media (max-width: 768px) {
+  #root {
+    background-color: #ede9e7;
+    font-family: "nexonGothic";
+    padding: 0px 0px 0px 0px;
+  }
 }
 .app_content {
   padding: 10px;
@@ -73,7 +81,7 @@
 /* Present.tsx */
 .present_wrapper {
   display: inline-flex;
-  margin: 10px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
 }
 .present_whether_img {
   width: 80px;
@@ -99,7 +107,7 @@
 }
 @media (max-width: 768px) {
   .present_wrapper {
-    margin: 20px 0px 0px calc(200px + 20%);
+    margin: 20px 0px 0px calc(24% + 200px);
     position: absolute;
   }
   .present_whether_img {
@@ -131,14 +139,14 @@
 .chart_wrapper {
   border: 1px solid red;
   overflow-y: auto;
-  width: 50%;
+  width: calc(65% - 300px);
   position: absolute;
   top: 10px;
-  left: 360px;
+  left: calc(360px + 15%);
 }
 @media (max-width: 768px) {
   .chart_wrapper {
-    width: 80%;
+    width: 100%;
     border: 1px solid blue;
     position: inherit;
   }
@@ -156,6 +164,7 @@
 .recommand_wrapper {
   width: 80%;
   top: 70px;
+  left: 30px;
   position: relative;
 }
 .recommand_flex-container {
@@ -184,12 +193,13 @@
   font-weight: bold;
 }
 .recommand_text {
-  margin-left: 10px;
+  margin-left: 45%;
   font-size: 16pt;
 }
 @media (max-width: 768px) {
   .recommand_wrapper {
     top: 30px;
+    left: 10%;
   }
   .recommand_flex-container {
     width: 84%;
@@ -212,13 +222,13 @@
 .siteList_wrapper {
   top: -160px;
   left: 300px;
-  width: 60%;
+  width: calc(80% - 300px);
   position: relative;
 }
 .siteList_items {
-  border: 1px solid #bebebe;
+  border: 2px solid #bebebe;
   background-color: #e2e2e2;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
   display: flex;
 }
 
@@ -227,7 +237,7 @@
     width: 70%;
     position: relative;
     top: 30px;
-    left: 10px;
+    left: 12%;
   }
 }
 
@@ -235,9 +245,11 @@
 .item_flex-container {
   padding: 4px;
 }
+.item_flex-container:last-child {
+  padding: 15px 0px 20px 8px;
+}
 .item_img {
   width: 100px;
-  margin-right: 10px;
 }
 .item_font1 {
   font-weight: bold;
@@ -256,6 +268,6 @@
   font-weight: bold;
   color: #8686a1;
   position: relative;
-  top: 35%;
+  top: 30%;
   cursor: pointer;
 }
