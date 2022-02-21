@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { IFcst } from "../common/interface";
 import moment from "moment";
-import { whetherState } from "../common/utils";
+import { weekOfDay, whetherState } from "../common/utils";
 import { enSkyState } from "../common/enType";
 
 const Chart = (props: { values: IFcst[] }) => {
@@ -46,13 +46,11 @@ const Chart = (props: { values: IFcst[] }) => {
       cloudy.onload = () => {
         let x = 0;
         let y = 100;
+        const fixedY = 20;
         const xDiff = 40;
 
-        ctx.font = "10px";
-        ctx.fillStyle = "red";
-
-        ctx.strokeStyle = "green";
-        ctx.lineWidth = 5;
+        ctx.strokeStyle = "pink";
+        ctx.lineWidth = 3;
 
         ctx.beginPath();
 
@@ -60,6 +58,8 @@ const Chart = (props: { values: IFcst[] }) => {
         const startAngle = 0; // 원의 시작위치
         const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
         const anticlockwise = true; // 시계방향/반시계방향
+
+        let date = "";
 
         for (const value of values) {
           x = x + xDiff;
@@ -88,43 +88,41 @@ const Chart = (props: { values: IFcst[] }) => {
               ? cloudy
               : "",
             x - 10,
-            newY - 30,
+            newY - 50,
             imgWidth,
             imgHeight
           );
 
-          // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, newY - 30); // 날짜
-          // ctx.fillText(value.fcstTime, x - 10, newY - 5); // 시간
-          ctx.fillText(value.tmp, x - 5, newY + 15); // 기온
-          // ctx.fillText(value.pop + "%", x, newY + 25); // 강수확률
+          ctx.font = "14px nexonGothic";
+          ctx.fillStyle = "red";
+          ctx.fillText(value.tmp + "˚", x - 10, newY - 10); // 기온
+
+          ctx.font = "10px nexonGothic";
+          ctx.fillStyle = value.pop >= 60 ? "skyblue" : "gray";
+          ctx.fillText(value.pop + "%", x - 5, newY + 25); // 강수확률
+
+          if (date !== value.fcstDate) {
+            date = value.fcstDate;
+            // ctx.font = "18px nexonGothic";
+            // ctx.fillStyle = "purple";
+            // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, fixedY); // 날짜
+            const diff = moment(value.fcstDate).diff(
+              moment().format("YYYYMMDD"),
+              "days"
+            );
+
+            ctx.font = "12px nexonGothic";
+            ctx.fillStyle = "black";
+            ctx.fillText(weekOfDay(diff), x - 10, fixedY + 200); // 날짜로 내일,모레..출력
+            continue;
+          }
+          ctx.font = "12px nexonGothic";
+          ctx.fillStyle = "darkgray";
+          let valueTime = value.fcstTime.substring(0, 2) + "시";
+          ctx.fillText(valueTime, x - 10, fixedY + 200); // 시간
         }
         ctx.stroke();
       };
-    }
-
-    //날짜, 시간출력
-    if (canvas.getContext) {
-      const ctx = canvas.getContext("2d");
-
-      ctx.font = "10px";
-      ctx.fillStyle = "blue";
-
-      let x = 0;
-      let y = 20;
-      const xDiff = 40;
-
-      let date = "";
-      for (const value of values) {
-        x = x + xDiff;
-
-        if (date !== value.fcstDate) {
-          date = value.fcstDate;
-
-          ctx.fillText(value.fcstDate.substring(4, 8), x - 10, y); // 날짜
-        }
-        ctx.fillText(value.fcstTime, x - 10, y + 10); // 시간
-        ctx.fillText(value.pop + "%", x, y + 200); // 강수확률
-      }
     }
   };
 
@@ -134,9 +132,10 @@ const Chart = (props: { values: IFcst[] }) => {
       const ctx = canvas.getContext("2d");
       // 그레이디언트를 생성한다
       var lingrad = ctx.createLinearGradient(0, 0, 0, CART_HEIGHT);
-      lingrad.addColorStop(0, "orange");
-      lingrad.addColorStop(0.5, "white");
-      lingrad.addColorStop(1, "blue");
+      lingrad.addColorStop(0, "rgb(233 163 143 / 20%)");
+      lingrad.addColorStop(0.4, "white");
+      lingrad.addColorStop(0.6, "white");
+      lingrad.addColorStop(1, "rgb(130 212 243 / 20%)");
 
       // 외곽선과 채움 스타일에 그레이디언트를 적용한다
       ctx.fillStyle = lingrad;
@@ -148,7 +147,7 @@ const Chart = (props: { values: IFcst[] }) => {
 
   useEffect(() => {
     if (values.length > 0) {
-      background();
+      // background();
       draw();
     }
   }, [values]);

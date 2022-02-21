@@ -48,3 +48,16 @@ export const numberWithComma = (number: number) => {
   const numWithComma = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return numWithComma;
 };
+
+export const weekOfDay = (diff: number) => {
+  switch (diff) {
+    case 1:
+      return "내일";
+    case 2:
+      return "모레";
+    case 3:
+      return "글피";
+    default:
+      return "지금";
+  }
+};
