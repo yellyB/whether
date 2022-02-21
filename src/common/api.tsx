@@ -3,12 +3,7 @@ import { enResponse } from "./enType";
 import { IFcst, IFcstData } from "./interface";
 import _ from "lodash";
 import { strToNum } from "./utils";
-
-const filterData = (item: IFcstData, type) => {
-  if (item.category === type) {
-    return true;
-  } else return false;
-};
+import moment from "moment";
 
 export const getWhether = async (url: string) => {
   let result: any = {
@@ -36,17 +31,21 @@ export const getWhether = async (url: string) => {
         };
 
         resData.forEach((item) => {
-          if (timeData.fcstTime !== item.fcstTime) {
-            timeData.fcstDate = item.fcstDate;
-            timeData.fcstTime = item.fcstTime;
-            timeData.tmp = Number(item.fcstValue);
-            list.push({ ...timeData });
-          } else {
-            if (item.category === "POP") timeData.pop = Number(item.fcstValue);
-            else if (item.category === "PTY")
-              timeData.pty = Number(item.fcstValue);
-            else if (item.category === "SKY")
-              timeData.sky = Number(item.fcstValue);
+          // 현재시각 이후만 저장하기
+          if (moment().isBefore(moment(item.fcstDate + " " + item.fcstTime))) {
+            if (timeData.fcstTime !== item.fcstTime) {
+              timeData.fcstDate = item.fcstDate;
+              timeData.fcstTime = item.fcstTime;
+              timeData.tmp = Number(item.fcstValue);
+              list.push({ ...timeData });
+            } else {
+              if (item.category === "POP")
+                timeData.pop = Number(item.fcstValue);
+              else if (item.category === "PTY")
+                timeData.pty = Number(item.fcstValue);
+              else if (item.category === "SKY")
+                timeData.sky = Number(item.fcstValue);
+            }
           }
         });
 
