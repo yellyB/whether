@@ -42,3 +42,9 @@ export const getRandomInt = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 };
+
+// 천단위 콤마
+export const numberWithComma = (number: number) => {
+  const numWithComma = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return numWithComma;
+};

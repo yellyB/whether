@@ -83,3 +83,13 @@ export const getCody = async () => {
     .catch((error) => console.log("error:", error));
   return result;
 };
+
+export const getItems = async () => {
+  let result = [];
+  await Axios.get(process.env.PUBLIC_URL + "/datas/items.json")
+    .then((response) => {
+      result = response.data;
+    })
+    .catch((error) => console.log("error:", error));
+  return result;
+};

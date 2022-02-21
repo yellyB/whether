@@ -160,7 +160,7 @@ const Time = () => {
       <div className="time_date">{date}</div>
       <div>
         <button className="time_theme_btn" onClick={handleChangeThemeOnClick}>
-          {"<->"}
+          {"모드 변경"}
         </button>
       </div>
     </div>

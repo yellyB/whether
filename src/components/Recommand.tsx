@@ -7,7 +7,7 @@ const Recommand = (props: { value: IFcst }) => {
   const { value } = props;
 
   const [data, setData] = useState<string[]>([]);
-  const [index, setIndex] = useState<number>(0);
+  const [key, setKey] = useState<number>(0);
 
   const getData = () => {
     return getCody().then((response) => {
@@ -35,21 +35,25 @@ const Recommand = (props: { value: IFcst }) => {
   return (
     <>
       <div className="recommand_wrapper">
-        추천 아이템
+        <span className="recommand_text">추천 아이템</span>
         <br />
         <div className="recommand_flex-container">
           {data.map((item: string, index: number) => (
             <div
-              className="recommand_flex-item"
+              className={
+                key === index
+                  ? "recommand_flex-item recommand_flex-item_selected"
+                  : "recommand_flex-item"
+              }
               key={index}
-              onClick={() => setIndex(index)}
+              onClick={() => setKey(index)}
             >
               {item}
             </div>
           ))}
         </div>
       </div>
-      <SiteList key={index} />
+      <SiteList key={key} />
     </>
   );
 };

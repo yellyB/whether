@@ -43,6 +43,7 @@
 .time_theme_btn {
   position: absolute;
   margin: -30px 0px 0px 30px;
+  background-color: #d4d4d4;
 }
 .time_date {
   position: absolute;
@@ -154,60 +155,107 @@
 /* Recommand.tsx */
 .recommand_wrapper {
   width: 80%;
-  top: 30px;
+  top: 70px;
   position: relative;
 }
 .recommand_flex-container {
   margin: 10px;
   padding: 10px;
-  width: 30%;
+  width: 170px;
   max-width: 200px;
-  background: #889fc0;
+  background: #9dabbe;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  border-radius: 10px;
 }
 .recommand_flex-item {
+  width: 100%;
+  margin: 0px 5px 5px 5px;
+  padding: 3px 0px 3px 0px;
+  text-align: center;
+  border-radius: 10px;
   background: #e7e7e7;
-  width: 80%;
-  margin: 0px 10px 5px 0px;
+  color: #7a7a7a;
+}
+.recommand_flex-item_selected {
+  background: #e9e65c;
+  color: #57574c;
+  font-weight: bold;
+}
+.recommand_text {
+  margin-left: 10px;
+  font-size: 16pt;
 }
 @media (max-width: 768px) {
   .recommand_wrapper {
     top: 30px;
   }
   .recommand_flex-container {
-    width: 80%;
+    width: 84%;
     max-width: 1000px;
   }
   .recommand_flex-item {
     width: 30%;
     margin: 0px 10px 5px 0px;
   }
+  .recommand_flex-item_selected {
+    width: 30%;
+    margin: 0px 10px 5px 0px;
+  }
+  .recommand_text {
+    margin-left: 33%;
+  }
 }
 
 /* SiteList.tsx */
 .siteList_wrapper {
-  border: 1px solid red;
-  height: 100px;
-  position: relative;
   top: -160px;
   left: 300px;
-  width: calc(100% - 300px);
-  height: 100%;
+  width: 60%;
+  position: relative;
 }
+.siteList_items {
+  border: 1px solid #bebebe;
+  background-color: #e2e2e2;
+  margin-bottom: 3px;
+  display: flex;
+}
+
 @media (max-width: 768px) {
   .siteList_wrapper {
-    border: 1px solid red;
-    height: calc(100% + 50px);
+    width: 70%;
     position: relative;
-    top: 50px;
-    left: 0px;
+    top: 30px;
+    left: 10px;
   }
 }
-.siteList_img {
-  width: 100px;
+
+/* Item.tsx */
+.item_flex-container {
+  padding: 4px;
 }
-.siteList_font {
-  color: rgb(88, 88, 88);
+.item_img {
+  width: 100px;
+  margin-right: 10px;
+}
+.item_font1 {
+  font-weight: bold;
+}
+.item_font2 {
+  font-size: 10pt;
+  color: #686868;
+}
+.item_font3 {
+  font-weight: bold;
+  color: red;
+  position: relative;
+  top: 3px;
+}
+.item_font4 {
+  font-weight: bold;
+  color: #8686a1;
+  position: relative;
+  top: 35%;
+  cursor: pointer;
 }
