@@ -61,12 +61,7 @@ const App = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundImage:
-          "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
-      }}
-    >
+    <div className="app_wrapper">
       {loading && <Loading />}
       <div className="app_content">
         <div className="flex-container">
@@ -75,8 +70,8 @@ const App = () => {
         </div>
         <Chart values={datas} />
         <RecommandContainer value={nowValue} />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

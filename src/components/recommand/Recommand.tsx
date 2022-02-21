@@ -4,10 +4,10 @@ import { getCody } from "../../common/api";
 
 const RecommandList = (props: {
   value: IFcst;
-  key: number;
+  keys: number;
   setKey: Function;
 }) => {
-  const { value, key, setKey } = props;
+  const { value, keys, setKey } = props;
 
   const [data, setData] = useState<string[]>([]);
 
@@ -40,7 +40,7 @@ const RecommandList = (props: {
         {data.map((item: string, index: number) => (
           <div
             className={
-              key === index
+              keys === index
                 ? "recommand_flex-item recommand_flex-item_selected"
                 : "recommand_flex-item"
             }

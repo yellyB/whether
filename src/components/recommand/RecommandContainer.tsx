@@ -12,7 +12,7 @@ const RecommandContainer = (props: { value: IFcst }) => {
       <Divider />
       <RecommandList
         value={props.value}
-        key={key}
+        keys={key}
         setKey={(val) => {
           setKey(val);
         }}

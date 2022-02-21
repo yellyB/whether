@@ -22,7 +22,7 @@ const Present = (props: { value: IFcst; min: number; max: number }) => {
       <div className="present_text">
         <div className="present_current_text">{value.tmp}℃</div>
         <div className="present_other_text">
-          {min}˚ / {max}˚
+          {min}˚/ {max}˚
           <br />
           <img
             alt="rainPer"

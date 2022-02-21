@@ -2,7 +2,9 @@
 #root {
   background-color: #ede9e7;
   font-family: "nexonGothic";
-  padding: 0px 0px 0px 15%;
+}
+.app_content {
+  padding: 10px 0px 0px 15%;
 }
 @media (max-width: 768px) {
   #root {
@@ -11,8 +13,10 @@
     padding: 0px 0px 0px 0px;
   }
 }
-.app_content {
-  padding: 10px;
+@media (max-width: 768px) {
+  .app_content {
+    padding: 15px;
+  }
 }
 .backgroundImg_sunny {
   background-image: url("localhost:3005/whether/images/sunny.png");
@@ -163,7 +167,8 @@
 /* Recommand.tsx */
 .recommand_wrapper {
   top: 90px;
-  width: 100%;
+  width: 85%;
+  min-width: 700px;
   position: relative;
   display: inline-block;
 }
@@ -206,17 +211,18 @@
 @media (max-width: 768px) {
   .recommand_wrapper {
     top: 30px;
+    width: 100%;
   }
   .recommand_flex-container {
-    margin-left: 16%;
-    max-width: 400px;
+    margin-left: 24%;
+    max-width: 50%;
   }
   .recommand_flex-item {
-    width: 30%;
+    width: 28%;
     margin: 0px 10px 5px 0px;
   }
   .recommand_flex-item_selected {
-    width: 30%;
+    width: 28%;
     margin: 0px 10px 5px 0px;
   }
   .divider {
@@ -226,9 +232,9 @@
 
 /* SiteList.tsx */
 .siteList_wrapper {
-  top: -220px;
+  top: -222px;
   left: 300px;
-  width: calc(80% - 300px);
+  width: calc(95% - 300px);
   position: relative;
 }
 .siteList_items {
@@ -244,6 +250,7 @@
     position: relative;
     top: 30px;
     left: 16%;
+    margin-bottom: 60px;
   }
 }
 
@@ -281,7 +288,7 @@
 /* Footer.tsx */
 .footer {
   top: 10px;
-  left: -19%;
+  left: -10%;
   height: 80px;
   width: 120%;
   padding-top: 40px;
