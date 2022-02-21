@@ -3,9 +3,10 @@ import "./App.css";
 import "./style/style.css";
 import { IFcst, IRequestParams } from "./common/interface";
 import moment from "moment";
-import { Chart, Loading, Recommand, Present, Time } from "./components";
+import { Chart, Loading, Present, Time, Footer } from "./components";
 import { getWhether } from "./common/api";
 import _ from "lodash";
+import { RecommandContainer } from "./components/recommand";
 
 const App = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -53,6 +54,10 @@ const App = () => {
         setLoading(false);
       }
     });
+
+    // 타이틀 변경
+    const htmlTitle = document.querySelector("title");
+    htmlTitle.innerText = "날씨의 참견";
   }, []);
 
   return (
@@ -69,7 +74,8 @@ const App = () => {
           <Present value={nowValue} min={nowMin} max={nowMax} />
         </div>
         <Chart values={datas} />
-        <Recommand value={nowValue} />
+        <RecommandContainer value={nowValue} />
+        <Footer />
       </div>
     </div>
   );

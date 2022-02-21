@@ -111,7 +111,7 @@ const Chart = (props: { values: IFcst[] }) => {
               "days"
             );
 
-            ctx.font = "12px nexonGothic";
+            ctx.font = "12px nexonGothic_Bold";
             ctx.fillStyle = "black";
             ctx.fillText(weekOfDay(dayDiff), x - 10, fixedY); // 날짜로 내일,모레..출력
             continue;

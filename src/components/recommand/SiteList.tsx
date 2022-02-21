@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Item } from ".";
-import { getItems } from "../common/api";
-import { IItem } from "../common/interface";
-import { getRandomInt } from "../common/utils";
+import { getItems } from "../../common/api";
+import { IItem } from "../../common/interface";
+import { getRandomInt } from "../../common/utils";
+import Item from "./Item";
 
 const getData = () => {
   return getItems().then((response) => {
@@ -16,7 +16,6 @@ const SiteList = () => {
   useEffect(() => {
     getData()
       .then((res) => {
-        console.log(res);
         setItems(res);
       })
       .catch(() => {

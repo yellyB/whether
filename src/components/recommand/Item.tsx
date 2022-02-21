@@ -1,6 +1,6 @@
 import React from "react";
-import { IItem } from "../common/interface";
-import { numberWithComma } from "../common/utils";
+import { IItem } from "../../common/interface";
+import { numberWithComma } from "../../common/utils";
 
 const Item = (props: { data: IItem }) => {
   const { data } = props;
