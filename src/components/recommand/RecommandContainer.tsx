@@ -8,16 +8,18 @@ const RecommandContainer = (props: { value: IFcst }) => {
   const [key, setKey] = useState<number>(0);
 
   return (
-    <div className="recommand_wrapper">
+    <div className="temp">
       <Divider />
-      <RecommandList
-        value={props.value}
-        keys={key}
-        setKey={(val) => {
-          setKey(val);
-        }}
-      />
-      <SiteList key={key} />
+      <div className="recommand_wrapper">
+        <RecommandList
+          value={props.value}
+          keys={key}
+          setKey={(val) => {
+            setKey(val);
+          }}
+        />
+        <SiteList key={key} />
+      </div>
     </div>
   );
 };
