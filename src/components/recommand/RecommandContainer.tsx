@@ -10,7 +10,7 @@ const RecommandContainer = (props: { value: IFcst }) => {
   return (
     <div className="recommand_container">
       <Divider />
-      <div className="recommandNsite">
+      <div className="recommand_n_site">
         <RecommandList
           value={props.value}
           keys={key}

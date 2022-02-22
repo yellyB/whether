@@ -43,8 +43,21 @@ const Time = () => {
     setDate(`${month}월 ${date}일 ${day}요일`);
   };
 
+  const currentTime = () => {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    setTime(`${hours}:${minutes}:${seconds}`);
+  };
+
+  const startTimer = () => {
+    setInterval(currentTime, 1000);
+  };
+
   useEffect(() => {
     currentDate();
+    startTimer();
   }, []);
 
   const [theme, setTheme] = useState<string>("dark");
@@ -53,22 +66,17 @@ const Time = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const temp = () => {
+  const digitalClock = () => {
     const clock = document.getElementById("clock");
 
-    // Map digits to their names (this will be an array)
-    var digit_to_name =
+    // 시간
+    const digit_to_name =
       "zero one two three four five six seven eight nine".split(" ");
 
-    // This object will hold the digit elements
-    var digits = {};
+    const digits = {};
+    const positions = ["h1", "h2", ":", "m1", "m2", ":", "s1", "s2"];
 
-    // Positions for the hours, minutes, and seconds
-    var positions = ["h1", "h2", ":", "m1", "m2", ":", "s1", "s2"];
-
-    // Generate the digits with the needed markup,
-    // and add them to the clock
-
+    // 숫자별 마크업 생성
     const digit_holder = clock.getElementsByClassName("digits")[0];
 
     for (const i in positions) {
@@ -84,14 +92,14 @@ const Time = () => {
           span.setAttribute("class", "d" + i);
           pos.appendChild(span);
         }
-        // Set the digits as key:value pairs in the digits object
+        // digits 에  key:value 형식으로
         digits[item] = pos;
-        // Add the digit elements to the page
+        // digit 엘리먼트를 페이지에 추가
         digit_holder.append(pos);
       }
     }
 
-    // Add the weekday names
+    // 요일
     const weekday_names = "MON TUE WED THU FRI SAT SUN".split(" ");
 
     const weekday_holder = clock.getElementsByClassName("weekdays")[0];
@@ -104,15 +112,9 @@ const Time = () => {
 
     const weekdays = clock.getElementsByClassName("weekdays")[0];
 
-    // Run a timer every second and update the clock
-
+    // 매 초마다 타이머 돌려서 시계 갱신
     (function update_time() {
-      // Use moment.js to output the current time as a string
-      // hh is for the hours in 12-hour format,
-      // mm - minutes, ss-seconds (all with leading zeroes),
-      // d is for day of week and A is for AM/PM
-
-      var now = moment().format("HHmmssdA");
+      const now = moment().format("HHmmssdA");
 
       digits.h1.setAttribute("class", digit_to_name[now[0]]);
       digits.h2.setAttribute("class", digit_to_name[now[1]]);
@@ -121,49 +123,51 @@ const Time = () => {
       digits.s1.setAttribute("class", digit_to_name[now[4]]);
       digits.s2.setAttribute("class", digit_to_name[now[5]]);
 
-      // The library returns Sunday as the first day of the week.
-      // Stupid, I know. Lets shift all the days one position down,
-      // and make Sunday last
-
-      var dow = now[6];
+      let dow = now[6];
       dow--;
 
-      // Sunday!
       if (dow < 0) {
-        // Make it last
+        // 일요일 제일 마지막으로
         dow = 6;
       }
 
-      // Mark the active day of the week
+      // 일주일중 오늘 요일 active
       weekdays.classList.remove("active");
       const nowDay = weekdays.childNodes[dow];
       nowDay.setAttribute("class", "active");
 
-      // Schedule this function to be run again in 1 sec
+      // 1초마다
       setTimeout(update_time, 1000);
     })();
   };
 
   useEffect(() => {
-    temp();
+    digitalClock();
   }, []);
 
   return (
-    <div className="time_wrapper">
-      <div id="clock" className={theme}>
-        <div className="display">
-          <div className="weekdays"></div>
-          <div className="ampm"></div>
-          <div className="digits"></div>
+    <>
+      <div className="time_wrapper">
+        <div id="clock" className={theme}>
+          <div className="display">
+            <div className="weekdays"></div>
+            <div className="ampm"></div>
+            <div className="digits"></div>
+          </div>
+        </div>
+        <div className="time_date">{date}</div>
+        <div>
+          <button className="time_theme_btn" onClick={handleChangeThemeOnClick}>
+            {"모드 변경"}
+          </button>
         </div>
       </div>
-      <div className="time_date">{date}</div>
-      <div>
-        <button className="time_theme_btn" onClick={handleChangeThemeOnClick}>
-          {"모드 변경"}
-        </button>
+      <div className="time_wrapper">
+        <span className="time_nowTime_time">{time}</span>
+        <br />
+        <span className="time_nowTime_date">{date}</span>
       </div>
-    </div>
+    </>
   );
 };
 

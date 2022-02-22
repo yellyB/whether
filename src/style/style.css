@@ -3,6 +3,9 @@
   background-color: #ede9e7;
   font-family: "nexonGothic";
 }
+.app_wrapper {
+  border: 3px solid blue;
+}
 .app_content {
   padding: 10px 15% 10px 15%;
 }
@@ -38,14 +41,28 @@
   margin: 7px;
 }
 
+.upper_part {
+  display: flex;
+  border: 1px solid green;
+}
+@media (max-width: 768px) {
+  .upper_part {
+    display: block;
+    border: 1px solid green;
+  }
+}
+
 /* Time.tsx */
-.flex-container {
+.time_n_present_wrapper {
   flex-direction: column;
   display: flex;
 }
-.time_wrapper {
+.time_wrapper:nth-child(1) {
   width: 40%;
   height: 150px;
+}
+.time_wrapper:nth-child(2) {
+  display: none;
 }
 .time_theme_btn {
   position: absolute;
@@ -69,36 +86,43 @@
   background-clip: content-box, border-box;
 } */
 @media (max-width: 768px) {
-  .flex-container {
+  .time_n_present_wrapper {
     flex-direction: row;
   }
-  .time_wrapper {
-    width: 40%;
+  .time_wrapper:nth-child(1) {
+    width: 320px;
+    align-self: center;
+  }
+}
+@media (max-width: 622px) {
+  .time_n_present_wrapper {
+    justify-content: center;
   }
 }
 
 /* Present.tsx */
 .present_wrapper {
   display: inline-flex;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 20px 0px;
+  align-self: center;
 }
 .present_whether_img {
   width: 80px;
   height: 80px;
-  margin-left: 10px;
+  margin: 0px 20px 0px 0px;
 }
 .present_text {
   display: flex;
 }
 .present_current_text {
   font-family: "nexonGothic_light";
-  margin: 15px 0px 0px 20px;
-  font-size: 48pt;
+  font-size: 38pt;
   color: #2b2b2b;
+  align-self: center;
 }
 .present_other_text {
-  margin: 35px 0px 0px 10px;
-  font-size: 14pt;
+  margin: 22px 0px 0px 10px;
+  /* font-size: 12pt; */
 }
 .present_rainPer_img {
   position: relative;
@@ -106,26 +130,25 @@
 }
 @media (max-width: 768px) {
   .present_wrapper {
-    margin: 20px 0px 0px calc(24% + 200px);
-    position: absolute;
+    /* margin: 20px 0px 0px calc(24% + 200px); */
+    /* position: absolute; */
   }
   .present_whether_img {
     width: 100px;
     height: 100px;
+    margin: 0px 0px 0px 20px;
+    align-self: center;
   }
   .present_text {
     display: inline;
     margin-left: calc(5% - 10px);
   }
   .present_current_text {
-    font-family: "nexonGothic";
     margin: 5px 0px 0px 20px;
-    font-size: 32pt;
   }
   .present_other_text {
     width: 100px;
-    margin: 5px 0px 0px 20px;
-    font-size: 12pt;
+    margin: 10px 0px 0px 50px;
   }
   .present_rainPer_img {
     width: 15px;
@@ -134,14 +157,32 @@
   }
 }
 
+@media (max-width: 622px) {
+  .time_wrapper:nth-child(1) {
+    display: none;
+  }
+  .time_wrapper:nth-child(2) {
+    color: #494949;
+    display: block;
+    text-align: right;
+    margin: 20px 7% 0px 0px;
+  }
+  .time_nowTime_date {
+  }
+  .time_nowTime_time {
+    font-size: 28pt;
+    font-family: "nexonGothic_Light";
+  }
+}
+
 /* Chart.tsx */
 .chart_wrapper {
   border: 1px solid red;
   overflow-y: auto;
-  width: calc(65% - 300px);
-  position: absolute;
-  top: 10px;
-  left: calc(360px + 15%);
+  /* width: calc(65% - 300px); */
+  /* position: absolute; */
+  /* top: 10px; */
+  /* left: calc(360px + 15%); */
 }
 @media (max-width: 768px) {
   .chart_wrapper {
@@ -164,6 +205,7 @@
   text-align: center;
   display: inline-block;
   width: 100%;
+  margin: 30px 0px 15px 0px;
 }
 .divider {
   border: 1px solid #c4c4c4;
@@ -184,7 +226,7 @@
 }
 
 /* Recommand.tsx */
-.recommandNsite {
+.recommand_n_site {
   top: 90px;
   width: 80%;
   /* min-width: 700px; */
@@ -193,7 +235,7 @@
   justify-content: center;
 }
 .recommand_flex_wrapper {
-  /* margin: 20px 0px 0px 40px; */
+  margin: 0px 10px 0px 0px;
   padding: 10px;
   /* width: 30%; */
   width: 200px;
@@ -209,6 +251,7 @@
   margin: 0px 5px 5px 5px;
   padding: 3px 0px 3px 0px;
   text-align: center;
+  align-self: center;
   border-radius: 10px;
   background: #e7e7e7;
   color: #7a7a7a;
@@ -224,7 +267,7 @@
   display: inline-block;
 }
 @media (max-width: 768px) {
-  .recommandNsite {
+  .recommand_n_site {
     /* top: 30px; */
     /* width: 100%; */
     display: flex;
@@ -232,7 +275,7 @@
     justify-content: center;
   }
   .recommand_flex_wrapper {
-    /* margin-left: 24%; */
+    margin: 0px 0px 10px 0px;
     max-width: 100%;
     width: 100%;
     height: 100px;
@@ -306,13 +349,13 @@
 
 /* Footer.tsx */
 .footer {
-  top: 10px;
-  left: -10%;
+  /* top: 10px; */
+  /* left: -10%; */
   height: 80px;
-  width: 110%;
+  /* width: 100%; */
   padding-top: 40px;
   background-color: #8686a1;
-  position: relative;
+  /* position: relative; */
   text-align: center;
   color: #dbdbeb;
   font-size: 18pt;

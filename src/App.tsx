@@ -64,11 +64,13 @@ const App = () => {
     <div className="app_wrapper">
       {loading && <Loading />}
       <div className="app_content">
-        <div className="flex-container">
-          <Time />
-          <Present value={nowValue} min={nowMin} max={nowMax} />
+        <div className="upper_part">
+          <div className="time_n_present_wrapper">
+            <Time />
+            <Present value={nowValue} min={nowMin} max={nowMax} />
+          </div>
+          <Chart values={datas} />
         </div>
-        <Chart values={datas} />
         <RecommandContainer value={nowValue} />
       </div>
       <Footer />
