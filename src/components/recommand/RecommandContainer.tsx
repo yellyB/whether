@@ -8,9 +8,9 @@ const RecommandContainer = (props: { value: IFcst }) => {
   const [key, setKey] = useState<number>(0);
 
   return (
-    <div className="temp">
+    <div className="recommand_container">
       <Divider />
-      <div className="recommand_wrapper">
+      <div className="recommandNsite">
         <RecommandList
           value={props.value}
           keys={key}

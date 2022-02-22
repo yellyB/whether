@@ -4,19 +4,21 @@
   font-family: "nexonGothic";
 }
 .app_content {
-  /* padding: 10px 0px 0px 15%; */
+  padding: 10px 15% 10px 15%;
 }
 @media (max-width: 768px) {
   .app_content {
-    /* padding: 15px; */
+    padding: 10px;
   }
 }
+
 .backgroundImg_sunny {
   background-image: url("localhost:3005/whether/images/sunny.png");
 }
 .backgroundImg_windy {
   background-image: url("https://mdn.mozillademos.org/files/5405/gallery_4.jpg");
 }
+
 .app_loading {
   background-color: #494949;
   opacity: 90%;
@@ -174,7 +176,7 @@
   }
 }
 
-.temp {
+.recommand_container {
   border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
@@ -182,7 +184,7 @@
 }
 
 /* Recommand.tsx */
-.recommand_wrapper {
+.recommandNsite {
   top: 90px;
   width: 80%;
   /* min-width: 700px; */
@@ -190,7 +192,7 @@
   display: flex;
   justify-content: center;
 }
-.recommand_flex-container {
+.recommand_flex_wrapper {
   /* margin: 20px 0px 0px 40px; */
   padding: 10px;
   /* width: 30%; */
@@ -202,7 +204,7 @@
   height: 220px;
   /* display: inline-block; */
 }
-.recommand_flex-item {
+.recommand_flex_item {
   width: 100%;
   margin: 0px 5px 5px 5px;
   padding: 3px 0px 3px 0px;
@@ -211,7 +213,7 @@
   background: #e7e7e7;
   color: #7a7a7a;
 }
-.recommand_flex-item_selected {
+.recommand_flex_item_selected {
   background: #e9e65c;
   color: #57574c;
   font-weight: bold;
@@ -222,25 +224,25 @@
   display: inline-block;
 }
 @media (max-width: 768px) {
-  .recommand_wrapper {
+  .recommandNsite {
     /* top: 30px; */
     /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .recommand_flex-container {
+  .recommand_flex_wrapper {
     /* margin-left: 24%; */
     max-width: 100%;
     width: 100%;
     height: 100px;
     justify-content: center;
   }
-  .recommand_flex-item {
+  .recommand_flex_item {
     width: 30%;
     /* margin: 0px 10px 5px 0px; */
   }
-  .recommand_flex-item_selected {
+  .recommand_flex_item_selected {
     width: 30%;
     /* margin: 0px 10px 5px 0px; */
   }

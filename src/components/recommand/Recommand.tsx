@@ -36,13 +36,13 @@ const RecommandList = (props: {
 
   return (
     <>
-      <div className="recommand_flex-container">
+      <div className="recommand_flex_wrapper">
         {data.map((item: string, index: number) => (
           <div
             className={
               keys === index
-                ? "recommand_flex-item recommand_flex-item_selected"
-                : "recommand_flex-item"
+                ? "recommand_flex_item recommand_flex_item_selected"
+                : "recommand_flex_item"
             }
             key={index}
             onClick={(e) => setKey(index)}
