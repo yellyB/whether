@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/whether/static/css/main.76500e17.chunk.css",
-    "main.js": "/whether/static/js/main.7d2b9ea4.chunk.js",
-    "main.js.map": "/whether/static/js/main.7d2b9ea4.chunk.js.map",
+    "main.css": "/whether/static/css/main.a867c77b.chunk.css",
+    "main.js": "/whether/static/js/main.5eaec8b7.chunk.js",
+    "main.js.map": "/whether/static/js/main.5eaec8b7.chunk.js.map",
     "runtime-main.js": "/whether/static/js/runtime-main.3feb7cff.js",
     "runtime-main.js.map": "/whether/static/js/runtime-main.3feb7cff.js.map",
     "static/js/2.01ebb5da.chunk.js": "/whether/static/js/2.01ebb5da.chunk.js",
     "static/js/2.01ebb5da.chunk.js.map": "/whether/static/js/2.01ebb5da.chunk.js.map",
     "index.html": "/whether/index.html",
-    "static/css/main.76500e17.chunk.css.map": "/whether/static/css/main.76500e17.chunk.css.map",
+    "static/css/main.a867c77b.chunk.css.map": "/whether/static/css/main.a867c77b.chunk.css.map",
     "static/js/2.01ebb5da.chunk.js.LICENSE.txt": "/whether/static/js/2.01ebb5da.chunk.js.LICENSE.txt",
     "static/media/App.css": "/whether/static/media/NEXON Lv2 Gothic.8217f874.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.3feb7cff.js",
     "static/js/2.01ebb5da.chunk.js",
-    "static/css/main.76500e17.chunk.css",
-    "static/js/main.7d2b9ea4.chunk.js"
+    "static/css/main.a867c77b.chunk.css",
+    "static/js/main.5eaec8b7.chunk.js"
   ]
 }
