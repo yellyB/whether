@@ -93,7 +93,7 @@ const Chart = (props: { values: IFcst[] }) => {
             imgHeight
           );
 
-          ctx.font = "14px nexonGothic";
+          ctx.font = "14px nexonGothic_Bold";
           ctx.fillStyle = "red";
           ctx.fillText(value.tmp + "˚", x - 10, newY - 10); // 기온
 
@@ -132,10 +132,10 @@ const Chart = (props: { values: IFcst[] }) => {
       const ctx = canvas.getContext("2d");
       // 그레이디언트를 생성한다
       var lingrad = ctx.createLinearGradient(0, 0, 0, CART_HEIGHT);
-      lingrad.addColorStop(0, "rgb(233 163 143 / 20%)");
+      lingrad.addColorStop(0, "rgb(243 205 194 / 10%)");
       lingrad.addColorStop(0.4, "white");
       lingrad.addColorStop(0.6, "white");
-      lingrad.addColorStop(1, "rgb(130 212 243 / 20%)");
+      lingrad.addColorStop(1, "rgb(202 229 239 / 10%)");
 
       // 외곽선과 채움 스타일에 그레이디언트를 적용한다
       ctx.fillStyle = lingrad;
@@ -147,7 +147,7 @@ const Chart = (props: { values: IFcst[] }) => {
 
   useEffect(() => {
     if (values.length > 0) {
-      // background();
+      background();
       draw();
     }
   }, [values]);
@@ -157,7 +157,7 @@ const Chart = (props: { values: IFcst[] }) => {
       <canvas
         id="chart"
         className="chart"
-        width={CART_WIDTH}
+        width={CART_WIDTH - values.length * 2.5}
         height={CART_HEIGHT}
       ></canvas>
     </div>
