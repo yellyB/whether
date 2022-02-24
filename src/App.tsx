@@ -50,13 +50,14 @@ const App = () => {
   useEffect(() => {
     alert("111");
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    getData(url).then((res) => {
-      if (res) {
-        alert("222");
-        setLoading(false);
-      }
-      alert("333");
-    });
+    alert(url);
+    // getData(url).then((res) => {
+    //   if (res) {
+    //     alert("222");
+    //     setLoading(false);
+    //   }
+    //   alert("333");
+    // });
 
     // 타이틀 변경
     const htmlTitle = document.querySelector("title");
