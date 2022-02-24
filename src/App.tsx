@@ -57,9 +57,9 @@ const App = () => {
     //   }
     // });
     alert("ff");
-    // getCody().then((res) => {
-    //   console.log(res);
-    // });
+    getCody().then((res) => {
+      console.log(res);
+    });
 
     // 타이틀 변경
     const htmlTitle = document.querySelector("title");
