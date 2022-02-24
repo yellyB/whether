@@ -44,5 +44,6 @@
   "devDependencies": {
     "gh-pages": "^3.2.3"
   },
-  "homepage": "http://yellyB.github.io/whether"
+  "homepage": "http://yellyB.github.io/whether",
+  "proxy": "http://apis.data.go.kr"
 }

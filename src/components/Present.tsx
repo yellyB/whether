@@ -9,6 +9,7 @@ const Present = (props: { value: IFcst; min: number; max: number }) => {
   const [skyState, setSkyState] = useState<enSkyState>(enSkyState.sun);
 
   useEffect(() => {
+    console.log(value);
     setSkyState(whetherState(value));
   }, [value]);
 
@@ -37,3 +38,9 @@ const Present = (props: { value: IFcst; min: number; max: number }) => {
 };
 
 export default Present;
+
+Present.defaultProps = {
+  value: { fcstDate: "", fcstTime: "", tmp: 0, pop: 0, pty: 0, sky: 1 },
+  min: 0,
+  max: 0,
+};
