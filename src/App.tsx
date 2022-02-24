@@ -4,7 +4,7 @@ import "./style/style.css";
 import { IFcst, IRequestParams } from "./common/interface";
 import moment from "moment";
 import { Chart, Loading, Present, Time, Footer } from "./components";
-import { getWhether } from "./common/api";
+import { getCody, getWhether } from "./common/api";
 import _ from "lodash";
 import { RecommandContainer } from "./components/recommand";
 
@@ -51,10 +51,13 @@ const App = () => {
     const temp =
       "REACT_APP_API_KEY = rSzra4lWkesK5rHQ2eKEjLr46yqb%2BstwqooY4ckqtC%2FL26xtiLJpHsugsba3jq2BfWyHdzC4DEYXU%2Bfsf41a7w%3D%3D";
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${temp}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    getData(url).then((res) => {
-      if (res) {
-        setLoading(false);
-      }
+    // getData(url).then((res) => {
+    //   if (res) {
+    //     setLoading(false);
+    //   }
+    // });
+    getCody().then((res) => {
+      console.log(res);
     });
 
     // 타이틀 변경
