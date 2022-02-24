@@ -56,7 +56,7 @@ const App = () => {
     //     setLoading(false);
     //   }
     // });
-    alert("ff");
+    alert("f1f");
     getCody().then((res) => {
       console.log(res);
     });
