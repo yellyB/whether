@@ -48,17 +48,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    const temp =
-      "REACT_APP_API_KEY = rSzra4lWkesK5rHQ2eKEjLr46yqb%2BstwqooY4ckqtC%2FL26xtiLJpHsugsba3jq2BfWyHdzC4DEYXU%2Bfsf41a7w%3D%3D";
+    const proxy = "http://apis.data.go.kr";
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${temp}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    // getData(url).then((res) => {
-    //   if (res) {
-    //     setLoading(false);
-    //   }
-    // });
-    alert("f1f");
-    getCody().then((res) => {
-      console.log(res);
+    getData(proxy + url).then((res) => {
+      if (res) {
+        setLoading(false);
+      }
     });
 
     // 타이틀 변경
@@ -68,7 +63,7 @@ const App = () => {
 
   return (
     <div className="app_wrapper">
-      {/* {loading && <Loading />} */}
+      {loading && <Loading />}
       <div className="app_content">
         <div className="upper_part">
           <div className="time_n_present_wrapper">
