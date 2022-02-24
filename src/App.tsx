@@ -57,9 +57,9 @@ const App = () => {
     //   }
     // });
     alert("ff");
-    getCody().then((res) => {
-      console.log(res);
-    });
+    // getCody().then((res) => {
+    //   console.log(res);
+    // });
 
     // 타이틀 변경
     const htmlTitle = document.querySelector("title");
@@ -68,7 +68,7 @@ const App = () => {
 
   return (
     <div className="app_wrapper">
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       <div className="app_content">
         <div className="upper_part">
           <div className="time_n_present_wrapper">
