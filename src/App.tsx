@@ -48,7 +48,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
+    const temp =
+      "REACT_APP_API_KEY = rSzra4lWkesK5rHQ2eKEjLr46yqb%2BstwqooY4ckqtC%2FL26xtiLJpHsugsba3jq2BfWyHdzC4DEYXU%2Bfsf41a7w%3D%3D";
+    const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${temp}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
     getData(url).then((res) => {
       if (res) {
         setLoading(false);
