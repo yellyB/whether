@@ -48,10 +48,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log("ff");
-    const proxy = "http://apis.data.go.kr";
-    const url = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    getData(url).then((res) => {
+    console.log(process.env.REACT_APP_PROXY);
+    const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
+    console.log(process.env.REACT_APP_PROXY + url);
+    getData(process.env.REACT_APP_PROXY + url).then((res) => {
       if (res) {
         setLoading(false);
       }
