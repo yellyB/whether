@@ -9,7 +9,6 @@ const Present = (props: { value: IFcst; min: number; max: number }) => {
   const [skyState, setSkyState] = useState<enSkyState>(enSkyState.sun);
 
   useEffect(() => {
-    console.log(value);
     setSkyState(whetherState(value));
   }, [value]);
 

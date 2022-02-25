@@ -4,7 +4,7 @@ import "./style/style.css";
 import { IFcst, IRequestParams } from "./common/interface";
 import moment from "moment";
 import { Chart, Loading, Present, Time, Footer } from "./components";
-import { getCody, getWhether } from "./common/api";
+import { getWhether } from "./common/api";
 import _ from "lodash";
 import { RecommandContainer } from "./components/recommand";
 

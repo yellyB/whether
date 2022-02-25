@@ -7,7 +7,7 @@ import { enSkyState } from "../common/enType";
 const Chart = (props: { values: IFcst[] }) => {
   const { values } = props;
 
-  const CART_WIDTH = 3000;
+  const CART_WIDTH = 3400;
   const CART_HEIGHT = 250;
 
   const draw = () => {
@@ -45,7 +45,8 @@ const Chart = (props: { values: IFcst[] }) => {
 
       cloudy.onload = () => {
         let x = 0;
-        let y = 100;
+        let y = 80;
+        y = y + values[0].tmp * 5 * 2; // 맨 처음값을 y에 두기 위한 계산
         const fixedY = 220;
         const xDiff = 50;
 
@@ -157,7 +158,7 @@ const Chart = (props: { values: IFcst[] }) => {
       <canvas
         id="chart"
         className="chart"
-        width={CART_WIDTH - values.length * 2.5}
+        width={CART_WIDTH - values.length * 3}
         height={CART_HEIGHT}
       ></canvas>
     </div>

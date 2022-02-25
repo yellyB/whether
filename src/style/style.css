@@ -32,10 +32,9 @@
 }
 .app_loading_imgs {
   position: relative;
-  /* top: calc(50% - 10px); */
-  /* left: calc(50% - 45px); */
+  top: calc(50% - 10px);
+  left: calc(50% - 45px);
   opacity: 100%;
-  justify-self: center;
 }
 .loading_img {
   width: 25px;
