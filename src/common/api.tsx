@@ -11,7 +11,7 @@ export const getWhether = async (url: string) => {
     min: 0,
     max: 0,
   };
-
+  console.log(process.env.PUBLIC_URL);
   await Axios.get(url)
     .then(async (response) => {
       console.log(response.data[0] === "<" ? "실패" : "성공");
@@ -82,6 +82,7 @@ export const getCody = async () => {
   await Axios.get(process.env.PUBLIC_URL + "/datas/cody.json")
     .then((response) => {
       result = response.data;
+      console.log(result);
     })
     .catch((error) => console.log("error:", error));
   return result;
