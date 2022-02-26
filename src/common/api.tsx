@@ -11,8 +11,9 @@ export const getWhether = async (url: string) => {
     min: 0,
     max: 0,
   };
-  console.log(process.env.PUBLIC_URL);
-  await Axios.get(url)
+  const proxy = "http://apis.data.go.kr";
+  console.log("https://yelly-cors-anywhere.herokuapp.com/" + proxy + url);
+  await Axios.get("https://yelly-cors-anywhere.herokuapp.com/" + proxy + url)
     .then(async (response) => {
       console.log(response.data[0] === "<" ? "실패" : "성공");
       if (response.status === 200) {
