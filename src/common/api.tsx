@@ -12,7 +12,6 @@ export const getWhether = async (url: string) => {
     max: 0,
   };
   const proxy = "http://apis.data.go.kr";
-  console.log("https://yelly-cors-anywhere.herokuapp.com/" + proxy + url);
   await Axios.get("https://yelly-cors-anywhere.herokuapp.com/" + proxy + url)
     .then(async (response) => {
       console.log(response.data[0] === "<" ? "실패" : "성공");
@@ -55,7 +54,6 @@ export const getWhether = async (url: string) => {
         });
 
         list.push({ ...timeData });
-        console.log(list);
 
         //오늘 최저
         const min = await _.find(resData, (item: IFcstData) => {
@@ -83,7 +81,6 @@ export const getCody = async () => {
   await Axios.get(process.env.PUBLIC_URL + "/datas/cody.json")
     .then((response) => {
       result = response.data;
-      console.log(result);
     })
     .catch((error) => console.log("error:", error));
   return result;

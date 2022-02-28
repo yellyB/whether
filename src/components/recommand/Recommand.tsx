@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { ICody, IFcst } from "../../common/interface";
 import { getCody } from "../../common/api";
 
@@ -17,21 +17,27 @@ const RecommandList = (props: {
     });
   };
 
-  useEffect(() => {
-    getData()
+  const getNowCody = async () => {
+    let cody;
+    await getData()
       .then((res) => {
-        let cody = res[res.length - 1];
         for (const r of res) {
           if (value.tmp >= r.value) {
-            cody = value;
+            cody = r;
             return;
           }
         }
-        setData(cody.cloths.split(","));
       })
       .catch(() => {
         console.log("error from component [Recommand]");
       });
+    return cody;
+  };
+
+  useLayoutEffect(() => {
+    getNowCody().then((nowCody) => {
+      if (nowCody) setData(nowCody.cloths.split(","));
+    });
   }, [value]);
 
   return (

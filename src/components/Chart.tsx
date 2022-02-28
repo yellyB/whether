@@ -158,7 +158,7 @@ const Chart = (props: { values: IFcst[] }) => {
       <canvas
         id="chart"
         className="chart"
-        width={CART_WIDTH - values.length * 3}
+        width={CART_WIDTH - values.length * 2}
         height={CART_HEIGHT}
       ></canvas>
     </div>

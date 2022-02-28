@@ -192,11 +192,6 @@
   width: 20%;
   display: inline-block;
 }
-@media (max-width: 768px) {
-  .divider {
-    width: 110px;
-  }
-}
 
 .recommand_container {
   /* border: 1px solid red; */
