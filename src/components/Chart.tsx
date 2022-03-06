@@ -7,7 +7,7 @@ import { enSkyState } from "../common/enType";
 const Chart = (props: { values: IFcst[] }) => {
   const { values } = props;
 
-  const CART_WIDTH = 3400;
+  const CART_WIDTH = 3800;
   const CART_HEIGHT = 250;
 
   const draw = () => {
@@ -158,7 +158,7 @@ const Chart = (props: { values: IFcst[] }) => {
       <canvas
         id="chart"
         className="chart"
-        width={CART_WIDTH - values.length * 2}
+        width={CART_WIDTH - values.length * 5}
         height={CART_HEIGHT}
       ></canvas>
     </div>

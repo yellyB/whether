@@ -11,10 +11,13 @@ export const getWhether = async (url: string) => {
     min: 0,
     max: 0,
   };
-  const proxy = "http://apis.data.go.kr";
-  await Axios.get("https://yelly-cors-anywhere.herokuapp.com/" + proxy + url)
+  await Axios.get(url)
     .then(async (response) => {
+      console.log(response.data);
       console.log(response.data[0] === "<" ? "실패" : "성공");
+      if (response.data[0] === "<") {
+        return result;
+      }
       if (response.status === 200) {
         const resData: IFcstData[] = response.data.response.body.items.item;
         console.log(resData);

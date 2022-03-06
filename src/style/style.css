@@ -322,3 +322,9 @@
     display: none;
   }
 }
+
+.dataLoadFail {
+  height: calc(100vh - 140px);
+  font-size: 18pt;
+  padding: 20px 0px 0px 20px;
+}
