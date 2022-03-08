@@ -11,6 +11,8 @@ export const getWhether = async (url: string) => {
     min: 0,
     max: 0,
   };
+
+  console.log(url);
   await Axios.get(url)
     .then(async (response) => {
       console.log(response.data);

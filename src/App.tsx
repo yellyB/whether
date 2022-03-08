@@ -29,8 +29,10 @@ const App = () => {
     ny: 127,
   });
 
-  const corsError = "https://yelly-cors-anywhere.herokuapp.com/";
-  const proxy = "http://apis.data.go.kr";
+  const [corsError] = useState<string>(
+    "https://yelly-cors-anywhere.herokuapp.com/"
+  );
+  const [proxy] = useState<string>("http://apis.data.go.kr");
 
   const [datas, setDatas] = useState<IFcst[]>([]);
   const [nowValue, setNowValue] = useState<IFcst>({} as any);
@@ -55,7 +57,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const url = `/21360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
+    const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
     getData(corsError + proxy + url)
       .then((response) => {
         setDatas(response.data);
