@@ -5,7 +5,7 @@ import SiteList from "./SiteList";
 import Divider from "./Divider";
 
 const RecommandContainer = (props: { value: IFcst }) => {
-  const [key, setKey] = useState<number>(0);
+  const [key, setKey] = useState<string>("");
 
   return (
     <div className="recommand_container">
