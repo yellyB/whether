@@ -50,7 +50,7 @@ const Chart = (props: { values: IFcst[] }) => {
       cloudy.onload = () => {
         let x = 0;
         let y = 80;
-        y = y + Math.abs(values[0].tmp) * 5 * 2; // 맨 처음값을 y에 두기 위한 계산
+        y = y + Math.abs(values[0].tmp) * 3 * 2; // 맨 처음값을 y에 두기 위한 계산
         const fixedY = 220;
         const xDiff = 50;
 
