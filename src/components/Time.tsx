@@ -143,12 +143,15 @@ const Time = () => {
       nowDay.setAttribute("class", "active");
 
       // 1초마다
-      setTimeout(update_time, 1000);
+      setInterval(update_time, 1000);
     })();
   };
 
   useEffect(() => {
     digitalClock();
+    return (digitalClock) => {
+      clearInterval(digitalClock);
+    };
   }, []);
 
   return (
