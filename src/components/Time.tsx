@@ -66,6 +66,12 @@ const Time = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  /**
+   TODO
+   1. 리액트에 최적화하기
+   2. digitalClock 함수의 setTimeout을 setInterval로
+   3. useEffect에 리턴문 작성해서 언마운트시 함수 해제하기
+   **/
   const digitalClock = () => {
     const clock = document.getElementById("clock");
 
