@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Present = () => {
+  const timerId = useRef(null);
+
   const [cnt, setCnt] = useState<number>(1);
 
   const temp = () => {
@@ -15,7 +17,13 @@ const Present = () => {
   };
 
   useEffect(() => {
-    startTimer();
+    // startTimer();
+
+    timerId.current = setInterval(temp, 500);
+    return () => clearInterval(timerId.current);
+    // return () => {
+    //   // clearInterval(startTimer)
+    // };
   }, []);
 
   return (
@@ -26,6 +34,7 @@ const Present = () => {
             alt="loading"
             src={process.env.PUBLIC_URL + "/images/icon/loading" + i + ".png"}
             className="loading_img"
+            key={i}
           />
         ))}
       </div>

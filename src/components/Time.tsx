@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import "../style/clock.css";
 
 const Time = () => {
+  // const timerId = useRef(null);
+
   const [date, setDate] = useState("0000년 00월 00일");
   const [time, setTime] = useState("00:00:00");
 
@@ -57,7 +59,7 @@ const Time = () => {
 
   useEffect(() => {
     currentDate();
-    startTimer();
+    // startTimer();
   }, []);
 
   const [theme, setTheme] = useState<string>("dark");
@@ -149,9 +151,6 @@ const Time = () => {
 
   useEffect(() => {
     digitalClock();
-    return (digitalClock) => {
-      clearInterval(digitalClock);
-    };
   }, []);
 
   return (
