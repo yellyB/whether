@@ -27,7 +27,7 @@ const SiteList = () => {
     <div className="siteList_wrapper">
       {items.length > 0 &&
         Array.from({ length: 4 }, (v, i) => i).map((i: number) => (
-          <Item data={items[getRandomInt(i * 10, (i + 1) * 10)]} />
+          <Item data={items[getRandomInt(i * 10, (i + 1) * 10)]} key={i} />
         ))}
     </div>
   );
