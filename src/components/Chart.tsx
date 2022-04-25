@@ -10,6 +10,10 @@ const Chart = (props: { values: IFcst[] }) => {
   const CART_WIDTH = 3800;
   const CART_HEIGHT = 250;
 
+  /**
+  TODO
+  1. useRef써서 요소 
+  **/
   const draw = () => {
     const canvas = document.getElementById("chart");
     const canvas1 = document.getElementById("chart");
