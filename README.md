@@ -11,3 +11,11 @@ https://yellyb.github.io/whether
 
 # 결과
 ![whether](https://user-images.githubusercontent.com/50893303/165080025-4cacab32-cbdb-4587-96ca-ef88e6e1f372.png)
+
+# TODO
+1. 첫 화면 로딩 시 css제대로 안먹히는 문제
+2. chart - useRef로 접근해서 요소 제어
+3.       - 온도에 따라 차트 시작 y좌표를 일정하게 계산
+4. clock - 함수 리액트 방식으로 변경
+5.       - useEffect의 retune문에 타이머 함수 해제
+6. 추천 아이템 목록 누를 때 컴포넌트 최적화
