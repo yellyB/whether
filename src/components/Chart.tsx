@@ -49,30 +49,31 @@ const Chart = (props: { values: IFcst[] }) => {
 
       cloudy.onload = () => {
         let x = 0;
-        let y = 80;
-        y = y + Math.abs(values[0].tmp) * 3 * 2; // 맨 처음값을 y에 두기 위한 계산
-        const fixedY = 220;
-        const xDiff = 50;
+        let y = 80; // y좌표의 중간 지점 = 120. 첫 위치는 하단에 텍스트 고려해서 조금 높게 설정
+        const LARGER = 4; // y좌표를 1씩 증감하면 너무 차이가 적기 때문에 증폭시키기 위한 계수
+        y = y + Math.abs(values[0].tmp) * LARGER; // 맨 처음값을 y에 두기 위한 계산
+        const FIXED_Y = 220;
+        const X_DIFF = 50;
 
         ctx.strokeStyle = "pink";
         ctx.lineWidth = 3;
 
         ctx.beginPath();
 
-        const radius = 3; // 반지름
-        const startAngle = 0; // 원의 시작위치
-        const endAngle = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
-        const anticlockwise = true; // 시계방향/반시계방향
+        const RADIUS = 3; // 반지름
+        const START_ANGLE = 0; // 원의 시작위치
+        const END_ANGLE = Math.PI + (Math.PI * 2) / 2; // 원의 끝위치
+        const ANTI_CLOCKWISE = true; // 시계방향/반시계방향
 
         let date = "";
 
         for (const value of values) {
-          x = x + xDiff;
-          const newY = y - value.tmp * 5;
+          x = x + X_DIFF;
+          const newY = y - value.tmp * LARGER;
 
           // 시간별 좌표 원
           ctx.lineTo(x, newY);
-          ctx.arc(x, newY, radius, startAngle, endAngle, anticlockwise);
+          ctx.arc(x, newY, RADIUS, START_ANGLE, END_ANGLE, ANTI_CLOCKWISE);
 
           const wState = whetherState(value);
           // 날씨 상태 이미지
@@ -110,7 +111,7 @@ const Chart = (props: { values: IFcst[] }) => {
             date = value.fcstDate;
             // ctx.font = "18px nexonGothic";
             // ctx.fillStyle = "purple";
-            // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, fixedY); // 날짜
+            // ctx.fillText(value.fcstDate.substring(4, 8), x - 10, FIXED_Y); // 날짜
             const dayDiff = moment(value.fcstDate).diff(
               moment().format("YYYYMMDD"),
               "days"
@@ -118,13 +119,13 @@ const Chart = (props: { values: IFcst[] }) => {
 
             ctx.font = "12px nexonGothic_Bold";
             ctx.fillStyle = "black";
-            ctx.fillText(weekOfDay(dayDiff), x - 10, fixedY); // 날짜로 내일,모레..출력
+            ctx.fillText(weekOfDay(dayDiff), x - 10, FIXED_Y); // 날짜로 내일,모레..출력
             continue;
           }
           ctx.font = "12px nexonGothic";
           ctx.fillStyle = "darkgray";
           let valueTime = value.fcstTime.substring(0, 2) + "시";
-          ctx.fillText(valueTime, x - 10, fixedY); // 시간
+          ctx.fillText(valueTime, x - 10, FIXED_Y); // 시간
         }
         ctx.stroke();
       };
