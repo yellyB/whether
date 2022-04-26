@@ -5,29 +5,25 @@ import _ from "lodash";
 import { strToNum } from "./utils";
 import moment from "moment";
 
-export const getWhether = async (url: string) => {
+export const getWhether = async (url: string, isDummy: boolean) => {
   let result: any = {
     data: [],
     min: 0,
     max: 0,
   };
 
-  console.log(url);
   await Axios.get(url)
     .then(async (response) => {
-      console.log(response.data);
       console.log(response.data[0] === "<" ? "실패" : "성공");
       if (response.data[0] === "<") {
         return result;
       }
       if (response.status === 200) {
         const resData: IFcstData[] = response.data.response.body.items.item;
-        console.log(resData);
-
         const list = [];
 
         const timeData = {
-          fcstDate: resData[0].fcstDate,
+          fcstDate: isDummy ? moment().format("YYYYMMDD") : resData[0].fcstDate, // 더미 데이터면 오늘날짜로 바꿔줌
           fcstTime: resData[0].fcstTime,
           tmp: Number(resData[0].fcstValue),
           pop: 0,
@@ -38,12 +34,15 @@ export const getWhether = async (url: string) => {
         resData.forEach((item) => {
           // 현재시각 이후만 저장하기
           if (
+            isDummy ||
             moment().isBefore(
               moment(item.fcstDate + " " + item.fcstTime.substring(0, 2) + "59")
             )
           ) {
             if (timeData.fcstTime !== item.fcstTime) {
-              timeData.fcstDate = item.fcstDate;
+              timeData.fcstDate = isDummy
+                ? moment().format("YYYYMMDD")
+                : item.fcstDate;
               timeData.fcstTime = item.fcstTime;
               timeData.tmp = Number(item.fcstValue);
               list.push({ ...timeData });

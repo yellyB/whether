@@ -39,26 +39,28 @@ const App = () => {
   const [nowMin, setNowMin] = useState<number>(0);
   const [nowMax, setNowMax] = useState<number>(0);
 
-  const getData = async (url: string) => {
+  const getData = async (url: string, isDummy: boolean) => {
     let res;
-    await getWhether(url).then((response) => {
+    await getWhether(url, isDummy).then((response) => {
       res = response;
     });
     return res;
   };
 
   const handleDummyLoadOnClick = () => {
-    getData(process.env.PUBLIC_URL + "/datas/dummy.json").then((response) => {
-      setDatas(response.data);
-      setNowValue(response.data !== undefined && response.data[0]);
-      setNowMin(response.min);
-      setNowMax(response.max);
-    });
+    getData(process.env.PUBLIC_URL + "/datas/dummy.json", true).then(
+      (response) => {
+        setDatas(response.data);
+        setNowValue(response.data !== undefined && response.data[0]);
+        setNowMin(response.min);
+        setNowMax(response.max);
+      }
+    );
   };
 
   useEffect(() => {
     const url = `/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${params.serviceKey}&pageNo=1&numOfRows=${params.numOfRows}&dataType=${params.dataType}&base_date=${params.base_date}&base_time=${params.base_time}&nx=${params.nx}&ny=${params.ny}`;
-    getData(corsError + proxy + url)
+    getData(corsError + proxy + url, false)
       .then((response) => {
         setDatas(response.data);
         setNowValue(response.data !== undefined && response.data[0]);
