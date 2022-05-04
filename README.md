@@ -12,7 +12,7 @@ https://yellyb.github.io/whether
 # 결과
 ![whether](https://user-images.githubusercontent.com/50893303/165080025-4cacab32-cbdb-4587-96ca-ef88e6e1f372.png)
 
-# TODO
+# 과거의 코드 셀프 코드리뷰
 1. 첫 화면 로딩 시 css제대로 안먹히는 문제
 2. chart - useRef로 접근해서 요소 제어
 3.       - 온도에 따라 차트 시작 y좌표를 일정하게 계산
